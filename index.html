@@ -161,15 +161,15 @@ body::after{
 
 /* Lang */
 .lang{
-  display:flex;background:rgba(255,255,255,.05);
-  border:1px solid var(--border);border-radius:100px;padding:3px;
+  display:flex;background:rgba(237,232,225,.12);
+  border:1px solid rgba(237,232,225,.22);border-radius:100px;padding:3px;
 }
 .lang button{
-  font-size:.72rem;font-weight:400;letter-spacing:.08em;
-  color:rgba(237,232,225,.4);padding:4px 10px;border-radius:100px;
+  font-size:.72rem;font-weight:500;letter-spacing:.08em;
+  color:rgba(237,232,225,.7);padding:5px 11px;border-radius:100px;
   transition:all .2s;font-family:var(--ff-body);
 }
-.lang button.a{background:var(--gold);color:var(--ink)}
+.lang button.a{background:var(--gold);color:var(--ink);font-weight:600}
 
 /* Burger */
 .burger{
@@ -226,7 +226,7 @@ body::after{
 ═══════════════════════════════ */
 #hero{
   position:relative;min-height:100svh;
-  display:grid;grid-template-columns:1fr 1fr;
+  display:grid;grid-template-columns:1fr 1.65fr;
   overflow:hidden;
 }
 
@@ -414,6 +414,23 @@ body::after{
 }
 .why-card.big:hover .wc-img img{transform:scale(1.04)}
 
+/* wide bottom card */
+.why-card.wide{
+  grid-column:span 2;
+  display:grid;grid-template-columns:1fr 1fr;gap:0;
+  padding:0;overflow:hidden;
+}
+.why-card.wide .wc-text{padding:clamp(32px,4vw,52px)}
+.why-card.wide .wc-wide-img{
+  border-radius:0;overflow:hidden;
+  aspect-ratio:auto;min-height:280px;
+}
+.why-card.wide .wc-wide-img img{
+  width:100%;height:100%;object-fit:cover;display:block;
+  transition:transform .6s var(--ease-s);
+}
+.why-card.wide:hover .wc-wide-img img{transform:scale(1.04)}
+
 .wc-ico{
   width:48px;height:48px;border-radius:12px;
   background:var(--gold-xs);border:1px solid rgba(200,136,58,.2);
@@ -477,45 +494,41 @@ body::after{
 .srv-btn:hover{border-color:var(--gold);color:var(--gold)}
 
 /* ═══════════════════════════════
-   GALLERY / PORTFOLIO
+   ABOUT / GALLERY
 ═══════════════════════════════ */
 #gallery{background:var(--ink)}
-.gal-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  grid-template-rows:auto auto;
-  gap:10px;margin-top:52px;
+.about-wrap{
+  display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center;
+  margin-top:56px;
 }
-.gal-item{
-  position:relative;border-radius:var(--r);overflow:hidden;
-  background:var(--ink-3);cursor:pointer;
+.about-text p{
+  font-size:.97rem;font-weight:300;color:rgba(237,232,225,.58);
+  line-height:1.82;margin-bottom:16px;
 }
-.gal-item:first-child{
-  grid-column:span 2;
+.about-text p:last-of-type{margin-bottom:36px}
+.about-img{
+  border-radius:var(--r-lg);overflow:hidden;
+  aspect-ratio:4/3;
 }
-.gal-item img{
-  width:100%;height:100%;object-fit:cover;
-  display:block;aspect-ratio:4/3;
-  transition:transform .6s var(--ease-s),filter .4s;
+.about-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s var(--ease-s)}
+.about-img:hover img{transform:scale(1.03)}
+
+/* Gift CTA */
+.gift-btn-wrap{
+  display:flex;align-items:center;gap:16px;flex-wrap:wrap;
 }
-.gal-item:first-child img{aspect-ratio:unset;height:100%;min-height:340px}
-.gal-ov{
-  position:absolute;inset:0;
-  background:linear-gradient(to top,rgba(14,12,10,.72) 0%,transparent 50%);
-  display:flex;align-items:flex-end;padding:20px;
-  opacity:0;transition:opacity .35s;
+.gift-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(200,136,58,.12);
+  border:1px solid rgba(200,136,58,.28);
+  border-radius:100px;padding:8px 18px;
+  font-size:.82rem;font-weight:500;color:var(--gold);
 }
-.gal-ov-icon{
-  width:40px;height:40px;border-radius:50%;
-  background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);
-  backdrop-filter:blur(8px);
-  display:flex;align-items:center;justify-content:center;
-  color:#fff;font-size:1rem;margin-left:auto;
-  transform:scale(.85);transition:transform .3s var(--ease);
+.gift-badge-ico{font-size:1.1rem}
+
+@media(max-width:900px){
+  .about-wrap{grid-template-columns:1fr;gap:40px}
 }
-.gal-item:hover .gal-ov{opacity:1}
-.gal-item:hover .gal-ov-icon{transform:scale(1)}
-.gal-item:hover img{transform:scale(1.05);filter:brightness(.9)}
 
 /* Modal */
 .modal-bg{
@@ -543,7 +556,7 @@ body::after{
 ═══════════════════════════════ */
 #process{background:var(--ink-2)}
 .proc-grid{
-  display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;
+  display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:end;
   margin-top:64px;
 }
 .proc-steps{display:flex;flex-direction:column}
@@ -562,10 +575,10 @@ body::after{
 .ps-h{font-family:var(--ff-head);font-size:1.15rem;font-weight:300;color:var(--ivory);margin-bottom:8px}
 .ps-p{font-size:.87rem;color:rgba(237,232,225,.48);line-height:1.72}
 
-.proc-right{position:sticky;top:calc(var(--nav-h) + 32px)}
+.proc-right{position:relative}
 .proc-img{
   width:100%;border-radius:var(--r-lg);overflow:hidden;
-  aspect-ratio:3/4;
+  aspect-ratio:4/3;
 }
 .proc-img img{width:100%;height:100%;object-fit:cover;display:block}
 .proc-note{
@@ -621,13 +634,18 @@ body::after{
 /* ═══════════════════════════════
    CONTACT / FORM
 ═══════════════════════════════ */
-#contact{background:var(--ink-2);position:relative;overflow:hidden}
-.contact-deco{
-  position:absolute;top:-200px;right:-200px;
-  width:600px;height:600px;border-radius:50%;
-  background:radial-gradient(circle,rgba(200,136,58,.07),transparent 70%);
-  pointer-events:none;
+#contact{position:relative;overflow:hidden}
+#contact .ct-bg{
+  position:absolute;inset:0;
+  background:url('1.jpg') center/cover no-repeat;
+  z-index:0;
 }
+#contact .ct-bg::after{
+  content:'';position:absolute;inset:0;
+  background:rgba(10,8,6,.82);
+}
+#contact .wrap{position:relative;z-index:1}
+.contact-deco{display:none}
 .contact-inner{
   display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;
 }
@@ -773,6 +791,8 @@ footer{
 
   .why-grid{grid-template-columns:1fr}
   .why-card.big{grid-row:auto}
+  .why-card.wide{grid-template-columns:1fr;grid-column:span 1}
+  .why-card.wide .wc-wide-img{min-height:220px}
 
   .proc-grid{grid-template-columns:1fr;gap:48px}
   .proc-right{position:relative;top:auto}
@@ -827,6 +847,7 @@ footer{
     <div class="lang">
       <button class="a" onclick="setLang('uk')">UA</button>
       <button onclick="setLang('pl')">PL</button>
+      <button onclick="setLang('en')">EN</button>
     </div>
     <button class="btn btn-solid" onclick="openCalc()" data-t="n_cta">Записатись</button>
     <button class="burger" id="burger"><span></span><span></span><span></span></button>
@@ -850,6 +871,7 @@ footer{
     <div class="lang">
       <button class="a" onclick="setLang('uk')">UA</button>
       <button onclick="setLang('pl')">PL</button>
+      <button onclick="setLang('en')">EN</button>
     </div>
     <button class="btn btn-solid" onclick="closeMob();openCalc()" data-t="n_cta">Записатись</button>
   </div>
@@ -942,10 +964,13 @@ footer{
         <div class="wc-h" data-t="w3h">Ціль — ваша, програма — ваша</div>
         <div class="wc-p" data-t="w3p">Карта побиту, нова робота, університет чи просто хочете поговорити з сусідами — план навчання будується під вас.</div>
       </div>
-      <div class="why-card rv rv-4">
-        <div class="wc-ico">⚡</div>
-        <div class="wc-h" data-t="w4h">Видимий результат за 30 днів</div>
-        <div class="wc-p" data-t="w4p">Після місяця ви вже можете зробити покупки, розмовляти з лікарем і читати польські повідомлення без гугл-перекладача.</div>
+      <div class="why-card wide rv rv-4">
+        <div class="wc-text">
+          <div class="wc-ico">⚡</div>
+          <div class="wc-h" data-t="w4h">Видимий результат за 30 днів</div>
+          <div class="wc-p" data-t="w4p">Після місяця ви вже можете зробити покупки, розмовляти з лікарем і читати польські повідомлення без гугл-перекладача. Прогрес видно щотижня — і це мотивує продовжувати.</div>
+        </div>
+        <div class="wc-wide-img"><img src="8.jpg" alt="Результат навчання" loading="lazy"></div>
       </div>
     </div>
   </div>
@@ -1042,7 +1067,7 @@ footer{
 
       <div class="srv-card rv rv-6">
         <div class="srv-img">
-          <img src="6.jpg" alt="Для дітей" loading="lazy">
+          <img src="7.jpg" alt="Для дітей" loading="lazy">
           <div class="srv-tag-wrap"><span data-t="s6t">Від 5 років</span></div>
         </div>
         <div class="srv-body">
@@ -1060,47 +1085,30 @@ footer{
 
 <div class="sep"></div>
 
-<!-- ═════════ GALLERY ═════════ -->
+<!-- ═════════ ABOUT ═════════ -->
 <section id="gallery" class="sec">
   <div class="wrap">
     <div class="sec-tag rv"><span data-t="gal_tag">Про школу</span></div>
     <h2 class="sec-h rv rv-l" style="font-size:clamp(1.9rem,3.5vw,3rem)" data-t="gal_h">
       Місце, де народжується<br><em class="f-italic">впевненість у мові</em>
     </h2>
-    <p class="sec-sub rv rv-2" data-t="gal_sub">Затишна атмосфера Гданська, де кожен урок — це маленька перемога.</p>
 
-    <div class="gal-grid">
-      <div class="gal-item rv rv-l" onclick="openModal('1.jpg')">
-        <img src="1.jpg" alt="" loading="lazy">
-        <div class="gal-ov"><div class="gal-ov-icon">⊕</div></div>
+    <div class="about-wrap">
+      <div class="about-text rv">
+        <p data-t="ab_p1">Мовна школа в Гданську — це не просто курси. Це спільнота українців, які вирішили не просто виживати в Польщі, а жити тут повноцінно. Ми відкрились у 2022 році і за три роки допомогли понад 280 студентам знайти роботу, отримати карту побиту та відчути себе вдома.</p>
+        <p data-t="ab_p2">Наші викладачі самі пройшли через еміграцію. Вони знають, що таке страх перед черговим дзвінком в установу, незручність у магазині і радість від першої вільної розмови з польським колегою. Тому навчання у нас завжди живе, практичне і без зайвого тиску.</p>
+        <p data-t="ab_p3">Заняття проходять у центрі Гданська та онлайн. Маленькі групи, гнучкий розклад, викладачі з міжнародними сертифікатами та щирим бажанням допомогти — ось що відрізняє нас від звичайної мовної школи.</p>
+        <div class="gift-btn-wrap">
+          <div class="gift-badge"><span class="gift-badge-ico">🎁</span><span data-t="ab_gift">Перший урок — подарунок від нас</span></div>
+          <button class="btn btn-solid" onclick="openCalc()" data-t="ab_cta">Записатись безкоштовно →</button>
+        </div>
       </div>
-      <div class="gal-item rv rv-2" onclick="openModal('3.jpg')">
-        <img src="3.jpg" alt="" loading="lazy">
-        <div class="gal-ov"><div class="gal-ov-icon">⊕</div></div>
-      </div>
-      <div class="gal-item rv rv-3" onclick="openModal('4.jpg')">
-        <img src="4.jpg" alt="" loading="lazy">
-        <div class="gal-ov"><div class="gal-ov-icon">⊕</div></div>
-      </div>
-      <div class="gal-item rv rv-4" onclick="openModal('5.jpg')">
-        <img src="5.jpg" alt="" loading="lazy">
-        <div class="gal-ov"><div class="gal-ov-icon">⊕</div></div>
-      </div>
-      <div class="gal-item rv rv-5" onclick="openModal('6.jpg')">
-        <img src="6.jpg" alt="" loading="lazy">
-        <div class="gal-ov"><div class="gal-ov-icon">⊕</div></div>
+      <div class="about-img rv rv-2">
+        <img src="9.jpg" alt="Навчання у школі" loading="lazy">
       </div>
     </div>
   </div>
 </section>
-
-<!-- Modal -->
-<div class="modal-bg" id="modal" onclick="if(event.target===this)closeModal()">
-  <div class="modal-inner">
-    <button class="modal-close" onclick="closeModal()">✕</button>
-    <img id="modal-img" src="" alt="">
-  </div>
-</div>
 
 <div class="sep"></div>
 
@@ -1165,6 +1173,7 @@ footer{
 
 <!-- ═════════ CONTACT ═════════ -->
 <section id="contact" class="sec">
+  <div class="ct-bg"></div>
   <div class="contact-deco"></div>
   <div class="wrap">
     <div class="contact-inner">
@@ -1313,6 +1322,10 @@ uk:{
   s6t:'Від 5 років',s6h:'Польська для дітей',s6p:'Через гру, пісні й малювання. Дитина відчуває себе своєю в польській школі.',s6pr:'від 80 zł/год',
   s_btn:'Записатись',
   gal_tag:'Про школу',gal_h:'Місце, де народжується впевненість у мові',gal_sub:'Затишна атмосфера Гданська, де кожен урок — маленька перемога.',
+  ab_p1:'Мовна школа в Гданську — це не просто курси. Це спільнота українців, які вирішили не просто виживати в Польщі, а жити тут повноцінно. Ми відкрились у 2022 році і за три роки допомогли понад 280 студентам знайти роботу, отримати карту побиту та відчути себе вдома.',
+  ab_p2:'Наші викладачі самі пройшли через еміграцію. Вони знають, що таке страх перед черговим дзвінком в установу, незручність у магазині і радість від першої вільної розмови з польським колегою. Тому навчання у нас завжди живе, практичне і без зайвого тиску.',
+  ab_p3:'Заняття проходять у центрі Гданська та онлайн. Маленькі групи, гнучкий розклад, викладачі з міжнародними сертифікатами та щирим бажанням допомогти — ось що відрізняє нас від звичайної мовної школи.',
+  ab_gift:'Перший урок — подарунок від нас',ab_cta:'Записатись безкоштовно →',
   prc_tag:'Як ми працюємо',prc_h:'Від першого «Dzień dobry» до вільної розмови',
   p1h:'Безкоштовна діагностика',p1p:'15-хвилинна розмова з викладачем. Ніяких тестів, ніякого стресу.',
   p2h:'Індивідуальна програма',p2p:'Виходячи з вашої мети будуємо програму під вас.',
@@ -1355,6 +1368,10 @@ pl:{
   s6t:'Od 5 lat',s6h:'Polski dla dzieci',s6p:'Przez zabawę, piosenki i rysowanie. Dziecko czuje się swoje w polskiej szkole.',s6pr:'od 80 zł/godz.',
   s_btn:'Zapisz się',
   gal_tag:'O szkole',gal_h:'Miejsce, gdzie rodzi się pewność siebie w języku',gal_sub:'Przytulna atmosfera Gdańska, gdzie każda lekcja to mały sukces.',
+  ab_p1:'Szkoła językowa w Gdańsku to nie tylko kursy. To społeczność Ukraińców, którzy postanowili nie tylko przeżyć w Polsce, ale żyć tu pełnią życia. Otworzyliśmy się w 2022 roku i w ciągu trzech lat pomogliśmy ponad 280 uczniom znaleźć pracę, uzyskać kartę pobytu i poczuć się jak w domu.',
+  ab_p2:'Nasi nauczyciele sami przeszli przez emigrację. Wiedzą, czym jest strach przed kolejnym telefonem do urzędu, nieswojość w sklepie i radość z pierwszej swobodnej rozmowy z polskim współpracownikiem. Dlatego nauka jest zawsze żywa, praktyczna i bez zbędnej presji.',
+  ab_p3:'Zajęcia odbywają się w centrum Gdańska i online. Małe grupy, elastyczny grafik i nauczyciele z certyfikatami — to właśnie odróżnia nas od zwykłej szkoły językowej.',
+  ab_gift:'Pierwsza lekcja — nasz prezent dla Ciebie',ab_cta:'Zapisz się bezpłatnie →',
   prc_tag:'Jak pracujemy',prc_h:'Od pierwszego „Dzień dobry" do swobodnej rozmowy',
   p1h:'Bezpłatna diagnoza',p1p:'15-minutowa rozmowa z nauczycielem. Zero testów, zero stresu.',
   p2h:'Indywidualny program',p2p:'Na podstawie Twojego celu układamy program specjalnie dla Ciebie.',
@@ -1375,18 +1392,66 @@ pl:{
   cf3:'Przygotowanie do egzaminu',cf4:'Korporacyjne',cf5:'Klub konwersacyjny',cf6:'Dla dzieci',
   c_mo:'zł / miesiąc',c_cta:'Zapisz się w tej cenie →',
   ld_badge:'Bezpłatnie',ld_h:'Próbna lekcja w prezencie',ld_s:'Zostaw kontakt — sami się odezwiemy i dobierzemy wygodny termin',ld_btn:'Otrzymaj bezpłatną lekcję →',
+},
+en:{
+  n_why:'Why us',n_srv:'Services',n_gal:'About',n_prc:'How it works',n_rev:'Reviews',n_con:'Contact',n_cta:'Sign up',
+  h_tag:'Language School · Gdańsk',h_t1:'Polish that',h_t2:'changes',h_t3:'your life',
+  h_sub:"You're already here in Gdańsk. All that's left is to start speaking. Our teachers walked the same path and know how to get you to fluency in 3 months.",
+  h_c1:'Conversational Polish from lesson one',h_c2:'Exam prep & residence card support',h_c3:'Online and in-person at your convenience',
+  h_cta1:'Calculate price →',h_cta2:'Learn more',h_scroll:'Scroll',h_pill:'· 280+ students in Gdańsk',
+  st1:'Students',st2:'Pass exam first try',st3:'To fluent speech',st4:'Google Reviews',
+  why_tag:'Why us',why_h:'We change your life in Poland.',
+  w1h:'Language for your real life',w1p:'No abstract textbooks. You learn words you need today — at the doctor, at work, at government offices. First lesson is already practice.',
+  w2h:'Teachers who also emigrated',w2p:"They know the fear of making mistakes. So we've built a safe space where a mistake is just a step forward.",
+  w3h:'Your goal, your programme',w3p:'Residence card, new job, university or just chatting with neighbours — the plan is built around you.',
+  w4h:'Visible results in 30 days',w4p:"After one month you'll shop, talk to your doctor and read Polish messages without Google Translate. Progress is visible every week.",
+  srv_tag:'Services',srv_h:'Choose your format',srv_calc:'Calculate price',
+  s1t:'Most popular',s1h:'Individual lessons',s1p:'Full teacher attention. Your pace, your goals.',s1pr:'from 120 zł/h',
+  s2t:'Up to 6 people',s2h:'Group courses',s2p:'Live conversational practice in a small group. New friends and motivation.',s2pr:'from 60 zł/class',
+  s3t:'Certificate',s3h:'Exam preparation',s3p:'94% pass on first attempt. Certyfikat biegłości, residence card.',s3pr:'from 140 zł/h',
+  s4t:'Corporate',s4h:'Corporate training',s4p:'Polish for your team. On-site or online. VAT invoice.',s4pr:'from 200 zł/h',
+  s5t:'Weekly',s5h:'Conversation club',s5p:'Practice without formal study. Real topics, lively atmosphere.',s5pr:'25 zł/meeting',
+  s6t:'From age 5',s6h:'Polish for children',s6p:'Through games, songs and drawing. Your child will feel at home in a Polish school.',s6pr:'from 80 zł/h',
+  s_btn:'Sign up',
+  gal_tag:'About us',gal_h:'Where confidence in language is born',gal_sub:'The cosy atmosphere of Gdańsk, where every lesson is a small victory.',
+  ab_p1:'Language School in Gdańsk is more than classes. It\'s a community of Ukrainians who decided not just to survive in Poland, but to truly live here. We opened in 2022 and helped 280+ students find jobs, get residence cards and feel at home.',
+  ab_p2:'Our teachers went through emigration themselves. They know the fear of calling an office, the awkwardness in a shop and the joy of the first free conversation with a Polish colleague. That\'s why our lessons are always live, practical and pressure-free.',
+  ab_p3:'Classes run in central Gdańsk and online. Small groups, flexible schedule and internationally certified teachers with a genuine desire to help — that\'s what sets us apart from a regular language school.',
+  ab_gift:'First lesson — our gift to you',ab_cta:'Sign up for free →',
+  prc_tag:'How it works',prc_h:'From the first "Dzień dobry" to fluent conversation',
+  p1h:'Free diagnostic',p1p:'A 15-minute chat with a teacher. No tests, no stress. We just talk and figure out where to start.',
+  p2h:'Individual programme',p2p:'Based on your goal — residence card, job, university or just comfortable life — we build a plan for you.',
+  p3h:'Lessons & practice',p3p:'We speak Polish from lesson one. Minimal homework — only what actually helps. Progress visible week by week.',
+  p4h:'Result & continued growth',p4p:'You leave the exam with a document or simply start living freely in Polish. We stay in touch after the course.',
+  pn_h:'First lesson — free',pn_p:'Sign up for a trial lesson and see for yourself',
+  rev_tag:'Reviews',rev_h:'Their words are the best advertising',
+  ct_tag:'Sign up',ct_h:'Start speaking Polish this month',
+  ct_p:"Leave a request — we'll contact you within 2 hours, pick a convenient time and run a free trial lesson. No pressure, no commitment.",
+  b1:'Free level diagnostic',b2:'First lesson trial — no charge',b3:'We reply within 2 hours',
+  fm_h:'Sign up',fm_s:'First step is free',fm_btn:'Sign up for free →',
+  l_name:'Name',l_cont:'Telegram or phone',l_srv:'What interests you?',
+  ty_h:'Thank you!',ty_p:"We'll write to you within 2 hours. Check Telegram or your phone.",
+  ft:'© 2025 Language School · All rights reserved',
+  c_h:'Tuition cost',c_s:'Choose parameters — we\'ll calculate',
+  c_fmt:'Format',c_freq:'Classes per week',c_dur:'Duration',
+  cf0:'Choose format',cf1:'Individual (1:1)',cf2:'Small group (up to 6)',
+  cf3:'Exam preparation',cf4:'Corporate',cf5:'Conversation club',cf6:'For children',
+  c_mo:'zł / month',c_cta:'Sign up at this price →',
+  ld_badge:'Free',ld_h:'Trial lesson as a gift',ld_s:"Leave your contact — we'll reach out and find a convenient time",ld_btn:'Get a free lesson →',
 }};
 
 let lang='uk';
 function setLang(l){
   lang=l;
   const t=TR[l];
+  if(!t)return;
   document.querySelectorAll('[data-t]').forEach(el=>{
     const k=el.dataset.t;
     if(t[k]!==undefined) el.textContent=t[k];
   });
   document.querySelectorAll('.lang button').forEach(b=>{
-    b.classList.toggle('a',(b.textContent==='UA'&&l==='uk')||(b.textContent==='PL'&&l==='pl'));
+    const map={'UA':'uk','PL':'pl','EN':'en'};
+    b.classList.toggle('a', map[b.textContent]===l);
   });
   document.documentElement.lang=l;
 }
