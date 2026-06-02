@@ -1,0 +1,1508 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Мовна школа в Гданську — польська для українців. Індивідуальні заняття, підготовка до іспитів, розмовні клуби. Результат з першого місяця.">
+<meta property="og:title" content="Мовна школа · Gdańsk">
+<meta property="og:description" content="Заговоріть польською вільно. Репетитори в Гданську для українців.">
+<meta property="og:type" content="website">
+<title>Мовна школа · Польська в Гданську</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,200;0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,200;1,9..144,300;1,9..144,400&family=Instrument+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+
+<style>
+/* ═══════════════════════════════
+   TOKENS
+═══════════════════════════════ */
+:root{
+  --ink:     #0E0C0A;
+  --ink-2:   #1A1612;
+  --ink-3:   #242018;
+  --surface: #1F1B16;
+  --gold:    #C8883A;
+  --gold-l:  #E5A85C;
+  --gold-xs: rgba(200,136,58,.10);
+  --ivory:   #EDE8E1;
+  --muted:   #7A7068;
+  --border:  rgba(255,255,255,.06);
+  --r:       14px;
+  --r-lg:    24px;
+  --ease:    cubic-bezier(.22,.68,0,1.2);
+  --ease-s:  cubic-bezier(.25,.46,.45,.94);
+  --nav-h:   68px;
+  --ff-head: 'Fraunces', Georgia, serif;
+  --ff-body: 'Instrument Sans', system-ui, sans-serif;
+}
+
+/* ═══════════════════════════════
+   RESET
+═══════════════════════════════ */
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;font-size:16px}
+body{
+  font-family:var(--ff-body);
+  background:var(--ink);
+  color:var(--ivory);
+  overflow-x:hidden;
+  line-height:1.6;
+}
+img{display:block;max-width:100%}
+a{text-decoration:none;color:inherit}
+button{font-family:var(--ff-body);border:none;cursor:pointer;background:none}
+::-webkit-scrollbar{width:2px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:var(--gold);border-radius:1px}
+
+/* noise */
+body::after{
+  content:'';
+  position:fixed;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity:.022;
+  pointer-events:none;
+  z-index:9999;
+}
+
+/* ═══════════════════════════════
+   TYPOGRAPHY
+═══════════════════════════════ */
+.f-display{font-family:var(--ff-head);font-weight:300;line-height:1.08;letter-spacing:-.02em}
+.f-title  {font-family:var(--ff-head);font-weight:300;line-height:1.15;letter-spacing:-.015em}
+.f-italic {font-style:italic;color:var(--gold-l)}
+.f-label  {font-size:.72rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+.f-body   {font-size:1rem;font-weight:300;line-height:1.75;color:rgba(237,232,225,.65)}
+
+/* ═══════════════════════════════
+   LAYOUT HELPERS
+═══════════════════════════════ */
+.wrap{max-width:1240px;margin-inline:auto;padding-inline:clamp(20px,5vw,80px)}
+.sep{height:1px;background:linear-gradient(90deg,transparent,rgba(200,136,58,.14),transparent)}
+
+/* ═══════════════════════════════
+   BUTTONS
+═══════════════════════════════ */
+.btn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:13px 28px;border-radius:100px;
+  font-size:.9rem;font-weight:400;
+  transition:all .28s var(--ease-s);
+  white-space:nowrap;
+  position:relative;overflow:hidden;
+}
+.btn::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,transparent 30%,rgba(255,255,255,.12) 50%,transparent 70%);
+  transform:translateX(-100%);transition:transform .5s var(--ease-s);
+}
+.btn:hover::before{transform:translateX(100%)}
+
+.btn-solid{
+  background:var(--gold);color:var(--ink);
+}
+.btn-solid:hover{background:var(--gold-l);transform:translateY(-2px);box-shadow:0 12px 32px rgba(200,136,58,.35)}
+
+.btn-outline{
+  background:transparent;color:var(--ivory);
+  border:1px solid rgba(237,232,225,.2);
+}
+.btn-outline:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-2px)}
+
+/* ═══════════════════════════════
+   REVEAL ANIMATIONS
+═══════════════════════════════ */
+.rv{opacity:0;transform:translateY(32px);transition:opacity .75s var(--ease-s),transform .75s var(--ease-s)}
+.rv.in{opacity:1;transform:none}
+.rv-l{transition-delay:.08s}.rv-2{transition-delay:.16s}.rv-3{transition-delay:.24s}
+.rv-4{transition-delay:.32s}.rv-5{transition-delay:.40s}.rv-6{transition-delay:.48s}
+
+/* ═══════════════════════════════
+   NAVBAR
+═══════════════════════════════ */
+#nav{
+  position:fixed;top:0;left:0;right:0;
+  height:var(--nav-h);z-index:900;
+  display:flex;align-items:center;
+  padding:0 clamp(20px,5vw,80px);
+  transition:background .4s,backdrop-filter .4s,box-shadow .4s;
+}
+#nav.s{
+  background:rgba(14,12,10,.88);
+  backdrop-filter:blur(20px) saturate(1.4);
+  -webkit-backdrop-filter:blur(20px) saturate(1.4);
+  box-shadow:0 1px 0 rgba(200,136,58,.12),0 4px 24px rgba(0,0,0,.3);
+}
+.nav-logo{
+  font-family:var(--ff-head);font-size:1.35rem;font-weight:400;
+  color:var(--ivory);letter-spacing:-.01em;
+  display:flex;align-items:center;gap:6px;
+  flex-shrink:0;
+}
+.nav-logo-dot{color:var(--gold);font-size:1.6rem;line-height:0;margin-top:2px}
+.nav-links{
+  display:flex;align-items:center;gap:28px;
+  list-style:none;margin:0 auto;
+}
+.nav-links a{
+  font-size:.82rem;font-weight:400;letter-spacing:.04em;
+  color:rgba(237,232,225,.55);
+  transition:color .2s;position:relative;
+}
+.nav-links a::after{
+  content:'';position:absolute;bottom:-3px;left:0;
+  width:0;height:1px;background:var(--gold);
+  transition:width .3s var(--ease-s);
+}
+.nav-links a:hover{color:var(--ivory)}
+.nav-links a:hover::after{width:100%}
+.nav-r{display:flex;align-items:center;gap:12px;flex-shrink:0}
+
+/* Lang */
+.lang{
+  display:flex;background:rgba(255,255,255,.05);
+  border:1px solid var(--border);border-radius:100px;padding:3px;
+}
+.lang button{
+  font-size:.72rem;font-weight:400;letter-spacing:.08em;
+  color:rgba(237,232,225,.4);padding:4px 10px;border-radius:100px;
+  transition:all .2s;font-family:var(--ff-body);
+}
+.lang button.a{background:var(--gold);color:var(--ink)}
+
+/* Burger */
+.burger{
+  display:none;flex-direction:column;gap:5px;
+  padding:8px;border-radius:8px;
+  transition:background .2s;
+}
+.burger:hover{background:rgba(255,255,255,.06)}
+.burger span{
+  display:block;width:22px;height:1.5px;background:var(--ivory);
+  border-radius:1px;transition:all .3s;transform-origin:center;
+}
+.burger.o span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.burger.o span:nth-child(2){opacity:0;transform:scaleX(0)}
+.burger.o span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+
+/* ═══════════════════════════════
+   MOBILE MENU
+═══════════════════════════════ */
+#mob{
+  position:fixed;inset:0;background:#080806;z-index:880;
+  display:grid;place-items:center;
+  opacity:0;pointer-events:none;
+  transition:opacity .38s var(--ease-s);
+}
+#mob.o{opacity:1;pointer-events:all}
+.mob-x{
+  position:absolute;top:18px;right:20px;
+  width:42px;height:42px;border-radius:50%;
+  border:1px solid rgba(255,255,255,.1);
+  display:flex;align-items:center;justify-content:center;
+  color:rgba(237,232,225,.6);font-size:1rem;
+  transition:all .2s;
+}
+.mob-x:hover{border-color:var(--gold);color:var(--gold)}
+.mob-nav{list-style:none;text-align:center}
+.mob-nav li{overflow:hidden}
+.mob-nav a{
+  font-family:var(--ff-head);
+  font-size:clamp(2.2rem,8vw,3.8rem);
+  font-style:italic;font-weight:200;
+  color:rgba(237,232,225,.85);
+  display:block;padding:4px 0;
+  transition:color .2s;line-height:1.2;
+}
+.mob-nav a:hover{color:var(--gold-l)}
+.mob-foot{
+  position:absolute;bottom:40px;left:50%;transform:translateX(-50%);
+  display:flex;align-items:center;gap:16px;
+}
+
+/* ═══════════════════════════════
+   HERO
+═══════════════════════════════ */
+#hero{
+  position:relative;min-height:100svh;
+  display:grid;grid-template-columns:1fr 1fr;
+  overflow:hidden;
+}
+
+/* text side */
+.hero-left{
+  display:flex;flex-direction:column;justify-content:center;
+  padding:calc(var(--nav-h) + 60px) 0 80px clamp(20px,6vw,80px);
+  padding-right:60px;
+  position:relative;z-index:2;
+}
+.hero-tag{
+  display:inline-flex;align-items:center;gap:10px;
+  margin-bottom:32px;
+  animation:fadeUp .8s var(--ease-s) .2s both;
+}
+.hero-tag-line{width:28px;height:1px;background:var(--gold)}
+.hero-tag-text{font-size:.75rem;font-weight:400;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+
+.hero-h1{
+  font-family:var(--ff-head);
+  font-size:clamp(3rem,5.5vw,5.6rem);
+  font-weight:200;line-height:1.06;
+  letter-spacing:-.025em;
+  margin-bottom:28px;
+  animation:fadeUp .9s var(--ease-s) .38s both;
+}
+.hero-h1 em{font-style:italic;color:var(--gold-l)}
+
+.hero-desc{
+  font-size:1.05rem;font-weight:300;
+  color:rgba(237,232,225,.62);line-height:1.78;
+  max-width:480px;margin-bottom:40px;
+  animation:fadeUp .8s var(--ease-s) .55s both;
+}
+
+.hero-checks{
+  display:flex;flex-direction:column;gap:10px;
+  margin-bottom:44px;
+  animation:fadeUp .8s var(--ease-s) .7s both;
+}
+.hc{display:flex;align-items:center;gap:12px;font-size:.9rem;color:rgba(237,232,225,.78)}
+.hc-dot{
+  width:18px;height:18px;border-radius:50%;flex-shrink:0;
+  background:var(--gold-xs);border:1px solid rgba(200,136,58,.35);
+  display:flex;align-items:center;justify-content:center;
+  font-size:.6rem;color:var(--gold);
+}
+
+.hero-btns{
+  display:flex;gap:12px;flex-wrap:wrap;
+  animation:fadeUp .8s var(--ease-s) .85s both;
+}
+.hero-btns .btn{padding:14px 32px;font-size:.95rem}
+
+/* image side */
+.hero-right{
+  position:relative;overflow:hidden;
+}
+.hero-img{
+  position:absolute;inset:0;
+  background:url('1.jpg') center/cover no-repeat;
+  transform:scale(1.04);
+  animation:imgReveal 1.4s var(--ease-s) .1s both;
+}
+.hero-img::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(to right, var(--ink) 0%, rgba(14,12,10,0) 35%),
+             linear-gradient(to top, rgba(14,12,10,.6) 0%, transparent 50%);
+}
+
+/* Rating pill */
+.hero-pill{
+  position:absolute;bottom:48px;left:50%;transform:translateX(-50%);
+  z-index:3;
+  background:rgba(30,26,20,.85);
+  backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:100px;
+  padding:10px 18px;
+  display:flex;align-items:center;gap:10px;
+  animation:fadeUp .8s var(--ease-s) 1s both;
+  white-space:nowrap;
+}
+.hp-stars{color:#F4B942;font-size:.8rem;letter-spacing:1px}
+.hp-num{font-family:var(--ff-head);font-size:1.1rem;font-weight:400}
+.hp-txt{font-size:.75rem;color:rgba(237,232,225,.5)}
+.hp-div{width:1px;height:20px;background:rgba(255,255,255,.12)}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+@keyframes imgReveal{from{opacity:0;transform:scale(1.08)}to{opacity:1;transform:scale(1.04)}}
+
+/* Scroll indicator */
+.scroll-ind{
+  position:absolute;bottom:36px;left:clamp(20px,6vw,80px);
+  z-index:3;
+  display:flex;align-items:center;gap:12px;
+  font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;
+  color:rgba(237,232,225,.35);
+  animation:fadeUp .8s var(--ease-s) 1.1s both;
+}
+.scroll-line{
+  width:32px;height:1px;background:rgba(237,232,225,.2);
+  position:relative;overflow:hidden;
+}
+.scroll-line::after{
+  content:'';position:absolute;inset-block:0;left:-100%;width:100%;
+  background:var(--gold);
+  animation:scrollLine 2s ease-in-out 1.5s infinite;
+}
+@keyframes scrollLine{0%{left:-100%}50%{left:0}100%{left:100%}}
+
+/* ═══════════════════════════════
+   STATS STRIP
+═══════════════════════════════ */
+#stats{
+  background:var(--ink-2);
+  border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+}
+.stats-inner{
+  display:grid;grid-template-columns:repeat(4,1fr);
+}
+.stat{
+  padding:36px 40px;text-align:center;
+  border-right:1px solid var(--border);
+  transition:background .3s;
+}
+.stat:last-child{border-right:none}
+.stat:hover{background:rgba(200,136,58,.04)}
+.stat-n{
+  font-family:var(--ff-head);
+  font-size:clamp(2.4rem,3.5vw,3.4rem);
+  font-weight:200;color:var(--gold);
+  line-height:1;margin-bottom:6px;
+  letter-spacing:-.02em;
+}
+.stat-l{font-size:.78rem;color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
+
+/* ═══════════════════════════════
+   SECTION FRAME
+═══════════════════════════════ */
+.sec{padding:clamp(80px,10vw,130px) 0}
+.sec-tag{display:flex;align-items:center;gap:10px;margin-bottom:18px}
+.sec-tag::before{content:'';display:block;width:20px;height:1px;background:var(--gold)}
+.sec-tag span{font-size:.72rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+.sec-h{font-family:var(--ff-head);font-weight:200;line-height:1.12;letter-spacing:-.02em;color:var(--ivory)}
+.sec-sub{font-size:1rem;font-weight:300;color:rgba(237,232,225,.55);line-height:1.78;margin-top:14px;max-width:520px}
+
+/* ═══════════════════════════════
+   WHY / FEATURES
+═══════════════════════════════ */
+#why{background:var(--ink)}
+.why-grid{
+  display:grid;grid-template-columns:repeat(2,1fr);grid-template-rows:auto auto;
+  gap:1px;background:var(--border);
+  border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden;
+  margin-top:56px;
+}
+.why-card{
+  background:var(--ink-2);
+  padding:clamp(32px,4vw,52px);
+  transition:background .3s var(--ease-s);
+  position:relative;overflow:hidden;
+}
+.why-card::before{
+  content:'';position:absolute;
+  bottom:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,var(--gold),var(--gold-l));
+  transform:scaleX(0);transform-origin:left;
+  transition:transform .4s var(--ease-s);
+}
+.why-card:hover{background:var(--ink-3)}
+.why-card:hover::before{transform:scaleX(1)}
+
+/* big card spans 2 rows */
+.why-card.big{grid-row:span 2;display:flex;flex-direction:column;justify-content:space-between}
+.why-card.big .wc-img{
+  width:100%;aspect-ratio:4/3;border-radius:var(--r);overflow:hidden;
+  margin-top:auto;flex-shrink:0;
+}
+.why-card.big .wc-img img{
+  width:100%;height:100%;object-fit:cover;
+  transition:transform .6s var(--ease-s);
+}
+.why-card.big:hover .wc-img img{transform:scale(1.04)}
+
+.wc-ico{
+  width:48px;height:48px;border-radius:12px;
+  background:var(--gold-xs);border:1px solid rgba(200,136,58,.2);
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.3rem;margin-bottom:20px;
+}
+.wc-h{font-family:var(--ff-head);font-size:1.3rem;font-weight:300;margin-bottom:10px;color:var(--ivory)}
+.wc-p{font-size:.9rem;color:rgba(237,232,225,.5);line-height:1.72}
+
+/* ═══════════════════════════════
+   SERVICES
+═══════════════════════════════ */
+#services{background:var(--ink-2)}
+.srv-header{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap}
+.srv-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:20px;
+  margin-top:52px;
+}
+.srv-card{
+  background:var(--ink);
+  border:1px solid var(--border);
+  border-radius:var(--r-lg);overflow:hidden;
+  transition:transform .36s var(--ease),border-color .3s,box-shadow .36s;
+  display:flex;flex-direction:column;
+}
+.srv-card:hover{
+  transform:translateY(-8px);
+  border-color:rgba(200,136,58,.22);
+  box-shadow:0 24px 48px rgba(0,0,0,.35),0 0 0 1px rgba(200,136,58,.08);
+}
+.srv-img{
+  aspect-ratio:4/3;overflow:hidden;position:relative;
+  background:var(--ink-3);
+}
+.srv-img img{
+  width:100%;height:100%;object-fit:cover;
+  transition:transform .55s var(--ease-s);
+}
+.srv-card:hover .srv-img img{transform:scale(1.06)}
+.srv-tag-wrap{
+  position:absolute;top:14px;left:14px;
+}
+.srv-tag-wrap span{
+  font-size:.68rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;
+  background:rgba(14,12,10,.75);
+  backdrop-filter:blur(8px);
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:100px;padding:4px 12px;color:var(--gold);
+}
+.srv-body{padding:22px 24px 28px;flex:1;display:flex;flex-direction:column}
+.srv-h{font-family:var(--ff-head);font-size:1.2rem;font-weight:300;color:var(--ivory);margin-bottom:8px}
+.srv-p{font-size:.86rem;color:rgba(237,232,225,.48);line-height:1.7;flex:1;margin-bottom:18px}
+.srv-foot{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.srv-price{font-family:var(--ff-head);font-size:1.25rem;font-weight:200;color:var(--gold-l);font-style:italic}
+.srv-btn{
+  font-size:.78rem;font-weight:400;
+  color:rgba(237,232,225,.6);
+  border:1px solid rgba(255,255,255,.1);border-radius:100px;
+  padding:7px 16px;transition:all .2s;
+}
+.srv-btn:hover{border-color:var(--gold);color:var(--gold)}
+
+/* ═══════════════════════════════
+   GALLERY / PORTFOLIO
+═══════════════════════════════ */
+#gallery{background:var(--ink)}
+.gal-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  grid-template-rows:auto auto;
+  gap:10px;margin-top:52px;
+}
+.gal-item{
+  position:relative;border-radius:var(--r);overflow:hidden;
+  background:var(--ink-3);cursor:pointer;
+}
+.gal-item:first-child{
+  grid-column:span 2;
+}
+.gal-item img{
+  width:100%;height:100%;object-fit:cover;
+  display:block;aspect-ratio:4/3;
+  transition:transform .6s var(--ease-s),filter .4s;
+}
+.gal-item:first-child img{aspect-ratio:unset;height:100%;min-height:340px}
+.gal-ov{
+  position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(14,12,10,.72) 0%,transparent 50%);
+  display:flex;align-items:flex-end;padding:20px;
+  opacity:0;transition:opacity .35s;
+}
+.gal-ov-icon{
+  width:40px;height:40px;border-radius:50%;
+  background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);
+  backdrop-filter:blur(8px);
+  display:flex;align-items:center;justify-content:center;
+  color:#fff;font-size:1rem;margin-left:auto;
+  transform:scale(.85);transition:transform .3s var(--ease);
+}
+.gal-item:hover .gal-ov{opacity:1}
+.gal-item:hover .gal-ov-icon{transform:scale(1)}
+.gal-item:hover img{transform:scale(1.05);filter:brightness(.9)}
+
+/* Modal */
+.modal-bg{
+  position:fixed;inset:0;background:rgba(6,5,3,.95);
+  z-index:8000;display:flex;align-items:center;justify-content:center;
+  opacity:0;pointer-events:none;transition:opacity .3s;padding:24px;
+  backdrop-filter:blur(8px);
+}
+.modal-bg.o{opacity:1;pointer-events:all}
+.modal-inner{position:relative}
+.modal-inner img{max-width:90vw;max-height:85vh;object-fit:contain;border-radius:var(--r);display:block}
+.modal-close{
+  position:absolute;top:-44px;right:0;
+  width:36px;height:36px;border-radius:50%;
+  border:1px solid rgba(255,255,255,.15);
+  background:none;
+  color:rgba(237,232,225,.7);font-size:.9rem;
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;transition:all .2s;
+}
+.modal-close:hover{border-color:var(--gold);color:var(--gold)}
+
+/* ═══════════════════════════════
+   PROCESS
+═══════════════════════════════ */
+#process{background:var(--ink-2)}
+.proc-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;
+  margin-top:64px;
+}
+.proc-steps{display:flex;flex-direction:column}
+.proc-step{
+  display:grid;grid-template-columns:52px 1fr;gap:20px;
+  padding:28px 0;border-bottom:1px solid var(--border);
+  transition:all .3s var(--ease-s);
+}
+.proc-step:last-child{border-bottom:none}
+.proc-step:hover .ps-n{color:var(--gold)}
+.ps-n{
+  font-family:var(--ff-head);font-size:2.4rem;font-weight:200;
+  color:rgba(200,136,58,.2);line-height:1;
+  transition:color .3s;
+}
+.ps-h{font-family:var(--ff-head);font-size:1.15rem;font-weight:300;color:var(--ivory);margin-bottom:8px}
+.ps-p{font-size:.87rem;color:rgba(237,232,225,.48);line-height:1.72}
+
+.proc-right{position:sticky;top:calc(var(--nav-h) + 32px)}
+.proc-img{
+  width:100%;border-radius:var(--r-lg);overflow:hidden;
+  aspect-ratio:3/4;
+}
+.proc-img img{width:100%;height:100%;object-fit:cover;display:block}
+.proc-note{
+  margin-top:20px;
+  background:var(--ink);border:1px solid var(--border);
+  border-radius:var(--r);padding:20px 24px;
+  display:flex;align-items:center;gap:14px;
+}
+.pn-ico{font-size:1.4rem;flex-shrink:0}
+.pn-h{font-size:.9rem;font-weight:500;color:var(--ivory);margin-bottom:3px}
+.pn-p{font-size:.8rem;color:var(--muted)}
+
+/* ═══════════════════════════════
+   REVIEWS
+═══════════════════════════════ */
+#reviews{background:var(--ink);overflow:hidden;padding-inline:0}
+.rev-head{padding-inline:clamp(20px,5vw,80px)}
+.rev-mask{
+  overflow:hidden;margin-top:52px;
+  mask-image:linear-gradient(90deg,transparent,black 8%,black 92%,transparent);
+  -webkit-mask-image:linear-gradient(90deg,transparent,black 8%,black 92%,transparent);
+}
+.rev-track{
+  display:flex;gap:16px;width:max-content;
+  animation:revScroll 42s linear infinite;
+  padding-block:8px;
+}
+.rev-track:hover{animation-play-state:paused}
+@keyframes revScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.rev-card{
+  width:308px;flex-shrink:0;
+  background:var(--ink-2);
+  border:1px solid var(--border);
+  border-radius:var(--r-lg);padding:28px;
+  transition:border-color .3s,transform .3s var(--ease-s);
+}
+.rev-card:hover{border-color:rgba(200,136,58,.2);transform:translateY(-4px)}
+.rev-stars{color:#F4B942;font-size:.82rem;letter-spacing:2px;margin-bottom:14px}
+.rev-q{
+  font-family:var(--ff-head);font-size:1.05rem;font-style:italic;font-weight:300;
+  color:var(--ivory);line-height:1.5;margin-bottom:20px;
+}
+.rev-auth{display:flex;align-items:center;gap:12px}
+.rev-av{
+  width:38px;height:38px;border-radius:50%;flex-shrink:0;
+  background:var(--gold-xs);border:1px solid rgba(200,136,58,.2);
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--ff-head);font-size:1rem;color:var(--gold);
+}
+.rev-name{font-size:.86rem;font-weight:500;color:var(--ivory);margin-bottom:2px}
+.rev-city{font-size:.76rem;color:var(--muted)}
+
+/* ═══════════════════════════════
+   CONTACT / FORM
+═══════════════════════════════ */
+#contact{background:var(--ink-2);position:relative;overflow:hidden}
+.contact-deco{
+  position:absolute;top:-200px;right:-200px;
+  width:600px;height:600px;border-radius:50%;
+  background:radial-gradient(circle,rgba(200,136,58,.07),transparent 70%);
+  pointer-events:none;
+}
+.contact-inner{
+  display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;
+}
+.cl-h{font-size:clamp(2rem,3.5vw,3.2rem);margin-bottom:18px}
+.cl-p{font-size:1rem;color:rgba(237,232,225,.55);line-height:1.78;margin-bottom:32px}
+.cl-badges{display:flex;flex-direction:column;gap:10px}
+.cl-badge{
+  display:flex;align-items:center;gap:12px;
+  font-size:.9rem;color:rgba(237,232,225,.7);
+}
+.cl-badge-ico{
+  width:28px;height:28px;border-radius:8px;flex-shrink:0;
+  background:var(--gold-xs);border:1px solid rgba(200,136,58,.2);
+  display:flex;align-items:center;justify-content:center;
+  font-size:.75rem;color:var(--gold);
+}
+
+/* Form */
+.form-box{
+  background:rgba(30,26,20,.6);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:var(--r-lg);padding:clamp(28px,4vw,44px);
+  backdrop-filter:blur(20px) saturate(1.3);
+  -webkit-backdrop-filter:blur(20px) saturate(1.3);
+  box-shadow:0 32px 80px rgba(0,0,0,.3),inset 0 1px 0 rgba(255,255,255,.07);
+}
+.fb-h{font-family:var(--ff-head);font-size:1.7rem;font-weight:300;color:var(--ivory);margin-bottom:5px}
+.fb-sub{font-size:.84rem;color:var(--muted);margin-bottom:26px}
+.fg{margin-bottom:14px}
+.fg label{
+  display:block;font-size:.74rem;letter-spacing:.09em;text-transform:uppercase;
+  color:rgba(237,232,225,.45);margin-bottom:7px;font-weight:400;
+}
+.fg input,.fg select,.fg textarea{
+  width:100%;background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.09);
+  border-radius:10px;padding:12px 15px;
+  color:var(--ivory);font-family:var(--ff-body);font-size:.93rem;
+  outline:none;transition:border-color .2s,background .2s;
+  -webkit-appearance:none;appearance:none;
+}
+.fg input:focus,.fg select:focus,.fg textarea:focus{
+  border-color:rgba(200,136,58,.45);background:rgba(200,136,58,.04);
+}
+.fg input::placeholder,.fg textarea::placeholder{color:rgba(237,232,225,.22)}
+.fg select option{background:#1A1612;color:var(--ivory)}
+.fg textarea{min-height:78px;resize:vertical}
+.btn-form{width:100%;padding:15px;border-radius:10px;font-size:.95rem;margin-top:6px}
+
+.f-ty{display:none;text-align:center;padding:40px 0}
+.f-ty.s{display:block}
+.ty-ico{font-size:3rem;margin-bottom:14px}
+.ty-h{font-family:var(--ff-head);font-size:1.6rem;color:var(--ivory);margin-bottom:8px}
+.ty-p{font-size:.9rem;color:var(--muted)}
+
+/* ═══════════════════════════════
+   FOOTER
+═══════════════════════════════ */
+footer{
+  background:var(--ink);
+  border-top:1px solid var(--border);
+  padding:32px clamp(20px,5vw,80px);
+  display:flex;align-items:center;justify-content:space-between;
+  flex-wrap:wrap;gap:16px;
+}
+.f-logo{font-family:var(--ff-head);font-size:1.2rem;font-weight:300;color:var(--ivory)}
+.f-logo em{color:var(--gold);font-style:italic}
+.f-copy{font-size:.78rem;color:var(--muted)}
+
+/* ═══════════════════════════════
+   POPUPS
+═══════════════════════════════ */
+.pop-bg{
+  position:fixed;inset:0;background:rgba(6,5,3,.75);
+  z-index:7000;display:flex;align-items:center;justify-content:center;
+  opacity:0;pointer-events:none;transition:opacity .3s;
+  backdrop-filter:blur(6px);padding:20px;
+}
+.pop-bg.o{opacity:1;pointer-events:all}
+.pop-box{
+  background:var(--ink-2);
+  border:1px solid rgba(200,136,58,.15);
+  border-radius:var(--r-lg);
+  padding:clamp(28px,4vw,44px);
+  width:100%;max-width:440px;
+  box-shadow:0 40px 100px rgba(0,0,0,.5);
+  position:relative;
+  transform:translateY(16px);transition:transform .35s var(--ease-s);
+}
+.pop-bg.o .pop-box{transform:none}
+.pop-x{
+  position:absolute;top:16px;right:16px;
+  width:32px;height:32px;border-radius:50%;
+  border:1px solid rgba(255,255,255,.1);
+  color:rgba(237,232,225,.5);
+  display:flex;align-items:center;justify-content:center;
+  font-size:.85rem;transition:all .2s;
+}
+.pop-x:hover{border-color:var(--gold);color:var(--gold)}
+
+.pop-h{font-family:var(--ff-head);font-size:1.75rem;font-weight:300;color:var(--ivory);margin-bottom:5px}
+.pop-sub{font-size:.84rem;color:var(--muted);margin-bottom:24px}
+.pop-badge{
+  display:inline-block;font-size:.68rem;font-weight:500;
+  letter-spacing:.1em;text-transform:uppercase;
+  color:var(--gold);background:var(--gold-xs);
+  border:1px solid rgba(200,136,58,.2);
+  border-radius:100px;padding:4px 12px;margin-bottom:14px;
+}
+
+/* Calc result */
+.calc-r{
+  background:var(--gold-xs);border:1px solid rgba(200,136,58,.18);
+  border-radius:10px;padding:18px 22px;text-align:center;
+  margin-bottom:18px;display:none;
+}
+.calc-r.s{display:block}
+.calc-num{font-family:var(--ff-head);font-size:2.6rem;font-weight:200;color:var(--gold);line-height:1;margin-bottom:3px}
+.calc-lbl{font-size:.78rem;color:var(--muted)}
+
+/* ═══════════════════════════════
+   RESPONSIVE ≤ 1100
+═══════════════════════════════ */
+@media(max-width:1100px){
+  .srv-grid{grid-template-columns:repeat(2,1fr)}
+}
+
+/* ═══════════════════════════════
+   RESPONSIVE ≤ 900
+═══════════════════════════════ */
+@media(max-width:900px){
+  #hero{grid-template-columns:1fr;min-height:100svh}
+  .hero-left{padding-right:clamp(20px,5vw,60px);padding-top:calc(var(--nav-h)+48px);padding-bottom:120px}
+  .hero-right{position:absolute;inset:0;z-index:0;opacity:.35}
+  .hero-right .hero-img::after{background:linear-gradient(to top,var(--ink) 30%,rgba(14,12,10,.5) 100%)}
+  .hero-pill{bottom:36px}
+
+  .stats-inner{grid-template-columns:repeat(2,1fr)}
+  .stat{border-right:1px solid var(--border);border-bottom:1px solid var(--border)}
+  .stat:nth-child(2){border-right:none}
+  .stat:nth-child(3){border-bottom:none}
+  .stat:nth-child(4){border-right:none;border-bottom:none}
+
+  .why-grid{grid-template-columns:1fr}
+  .why-card.big{grid-row:auto}
+
+  .proc-grid{grid-template-columns:1fr;gap:48px}
+  .proc-right{position:relative;top:auto}
+
+  .contact-inner{grid-template-columns:1fr;gap:48px}
+
+  .nav-links{display:none}
+  .nav-r .btn{display:none}
+  .burger{display:flex}
+}
+
+/* ═══════════════════════════════
+   RESPONSIVE ≤ 600
+═══════════════════════════════ */
+@media(max-width:600px){
+  :root{--nav-h:60px}
+  .hero-h1{font-size:clamp(2.4rem,10vw,3.4rem)}
+  .hero-btns{flex-direction:column}
+  .hero-btns .btn{width:100%;justify-content:center}
+
+  .stats-inner{grid-template-columns:1fr 1fr}
+  .stat{padding:24px 20px}
+
+  .srv-grid{grid-template-columns:1fr}
+  .srv-header{flex-direction:column;align-items:flex-start}
+
+  .gal-grid{grid-template-columns:1fr 1fr}
+  .gal-item:first-child{grid-column:span 2}
+
+  .pop-box{padding:28px 22px}
+  footer{flex-direction:column;text-align:center}
+  .mob-nav a{font-size:clamp(1.9rem,9vw,3rem)}
+}
+</style>
+</head>
+<body>
+
+<!-- ═════════ NAV ═════════ -->
+<nav id="nav">
+  <a href="#" class="nav-logo">
+    Мовна школа
+    <span class="nav-logo-dot">·</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#why"      data-t="n_why">Чому ми</a></li>
+    <li><a href="#services" data-t="n_srv">Послуги</a></li>
+    <li><a href="#gallery"  data-t="n_gal">Про школу</a></li>
+    <li><a href="#process"  data-t="n_prc">Як це працює</a></li>
+    <li><a href="#reviews"  data-t="n_rev">Відгуки</a></li>
+  </ul>
+  <div class="nav-r">
+    <div class="lang">
+      <button class="a" onclick="setLang('uk')">UA</button>
+      <button onclick="setLang('pl')">PL</button>
+    </div>
+    <button class="btn btn-solid" onclick="openCalc()" data-t="n_cta">Записатись</button>
+    <button class="burger" id="burger"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- ═════════ MOB MENU ═════════ -->
+<div id="mob">
+  <button class="mob-x" id="mobX">✕</button>
+  <nav>
+    <ul class="mob-nav">
+      <li><a href="#why"      onclick="closeMob()" data-t="n_why">Чому ми</a></li>
+      <li><a href="#services" onclick="closeMob()" data-t="n_srv">Послуги</a></li>
+      <li><a href="#gallery"  onclick="closeMob()" data-t="n_gal">Про школу</a></li>
+      <li><a href="#process"  onclick="closeMob()" data-t="n_prc">Як це працює</a></li>
+      <li><a href="#reviews"  onclick="closeMob()" data-t="n_rev">Відгуки</a></li>
+      <li><a href="#contact"  onclick="closeMob()" data-t="n_con">Контакт</a></li>
+    </ul>
+  </nav>
+  <div class="mob-foot">
+    <div class="lang">
+      <button class="a" onclick="setLang('uk')">UA</button>
+      <button onclick="setLang('pl')">PL</button>
+    </div>
+    <button class="btn btn-solid" onclick="closeMob();openCalc()" data-t="n_cta">Записатись</button>
+  </div>
+</div>
+
+
+<!-- ═════════ HERO ═════════ -->
+<section id="hero">
+  <div class="hero-left">
+    <div class="hero-tag">
+      <div class="hero-tag-line"></div>
+      <span class="hero-tag-text" data-t="h_tag">Мовна школа · Gdańsk</span>
+    </div>
+    <h1 class="hero-h1">
+      <span data-t="h_t1">Польська,</span><br>
+      <em class="f-italic" data-t="h_t2">яка змінює</em><br>
+      <span data-t="h_t3">ваше життя</span>
+    </h1>
+    <p class="hero-desc" data-t="h_sub">
+      Ви вже тут — в Гданську. Залишилось заговорити. Наші викладачі пройшли той самий шлях і знають, як довести вас до результату за 3 місяці.
+    </p>
+    <div class="hero-checks">
+      <div class="hc"><div class="hc-dot">✓</div><span data-t="h_c1">Розмовна польська з першого уроку</span></div>
+      <div class="hc"><div class="hc-dot">✓</div><span data-t="h_c2">Підготовка до іспитів і карти побиту</span></div>
+      <div class="hc"><div class="hc-dot">✓</div><span data-t="h_c3">Онлайн і офлайн у зручний час</span></div>
+    </div>
+    <div class="hero-btns">
+      <button class="btn btn-solid" onclick="openCalc()" data-t="h_cta1">Розрахувати вартість →</button>
+      <a href="#why" class="btn btn-outline" data-t="h_cta2">Дізнатись більше</a>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="hero-img"></div>
+  </div>
+
+  <div class="scroll-ind">
+    <div class="scroll-line"></div>
+    <span data-t="h_scroll">Гортайте</span>
+  </div>
+
+  <div class="hero-pill">
+    <div class="hp-stars">★★★★★</div>
+    <div class="hp-div"></div>
+    <div class="hp-num">4.97</div>
+    <div class="hp-txt" data-t="h_pill">· 280+ учнів у Gdańsk</div>
+  </div>
+</section>
+
+
+<!-- ═════════ STATS ═════════ -->
+<section id="stats">
+  <div class="wrap">
+    <div class="stats-inner">
+      <div class="stat rv"><div class="stat-n">280+</div><div class="stat-l" data-t="st1">Учнів</div></div>
+      <div class="stat rv rv-l"><div class="stat-n">94%</div><div class="stat-l" data-t="st2">Здають іспит з 1 разу</div></div>
+      <div class="stat rv rv-2"><div class="stat-n">3 міс</div><div class="stat-l" data-t="st3">До вільного мовлення</div></div>
+      <div class="stat rv rv-3"><div class="stat-n">5.0 ★</div><div class="stat-l" data-t="st4">Google Reviews</div></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═════════ WHY ═════════ -->
+<section id="why" class="sec">
+  <div class="wrap">
+    <div class="sec-tag rv"><span data-t="why_tag">Чому ми</span></div>
+    <h2 class="sec-h rv rv-l" style="font-size:clamp(2rem,4vw,3.2rem)" data-t="why_h">
+      Ми не вчимо мову.<br>Ми змінюємо ваш<br><em class="f-italic">досвід у Польщі.</em>
+    </h2>
+
+    <div class="why-grid" style="margin-top:56px">
+      <!-- Big card -->
+      <div class="why-card big rv rv-l">
+        <div>
+          <div class="wc-ico">🧭</div>
+          <div class="wc-h" data-t="w1h">Мова для вашого реального життя</div>
+          <div class="wc-p" data-t="w1p">Ніяких абстрактних підручників. Ви вчите слова, які потрібні вам сьогодні: в лікарні, на роботі, в держустановах. Перший урок — вже практика.</div>
+        </div>
+        <div class="wc-img"><img src="2.jpg" alt="Заняття" loading="lazy"></div>
+      </div>
+      <!-- Small cards -->
+      <div class="why-card rv rv-2">
+        <div class="wc-ico">🛡️</div>
+        <div class="wc-h" data-t="w2h">Викладачі, які теж емігрували</div>
+        <div class="wc-p" data-t="w2p">Вони знають страх помилитись. Тому у нас безпечне середовище, де помилка — це просто крок вперед.</div>
+      </div>
+      <div class="why-card rv rv-3">
+        <div class="wc-ico">🎯</div>
+        <div class="wc-h" data-t="w3h">Ціль — ваша, програма — ваша</div>
+        <div class="wc-p" data-t="w3p">Карта побиту, нова робота, університет чи просто хочете поговорити з сусідами — план навчання будується під вас.</div>
+      </div>
+      <div class="why-card rv rv-4">
+        <div class="wc-ico">⚡</div>
+        <div class="wc-h" data-t="w4h">Видимий результат за 30 днів</div>
+        <div class="wc-p" data-t="w4p">Після місяця ви вже можете зробити покупки, розмовляти з лікарем і читати польські повідомлення без гугл-перекладача.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="sep"></div>
+
+<!-- ═════════ SERVICES ═════════ -->
+<section id="services" class="sec">
+  <div class="wrap">
+    <div class="srv-header">
+      <div>
+        <div class="sec-tag rv"><span data-t="srv_tag">Послуги</span></div>
+        <h2 class="sec-h rv rv-l" style="font-size:clamp(1.9rem,3.5vw,3rem)" data-t="srv_h">Оберіть свій формат</h2>
+      </div>
+      <button class="btn btn-outline rv rv-l" onclick="openCalc()" data-t="srv_calc">Розрахувати вартість</button>
+    </div>
+
+    <div class="srv-grid">
+      <div class="srv-card rv rv-l">
+        <div class="srv-img">
+          <img src="1.jpg" alt="Індивідуальні заняття" loading="lazy">
+          <div class="srv-tag-wrap"><span data-t="s1t">Найпопулярніше</span></div>
+        </div>
+        <div class="srv-body">
+          <div class="srv-h" data-t="s1h">Індивідуальні заняття</div>
+          <div class="srv-p" data-t="s1p">Повна увага викладача. Ваш темп, ваші цілі. Найшвидший шлях до результату.</div>
+          <div class="srv-foot">
+            <div class="srv-price" data-t="s1pr">від 120 zł/год</div>
+            <button class="srv-btn" onclick="openCalc()" data-t="s_btn">Записатись</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="srv-card rv rv-2">
+        <div class="srv-img">
+          <img src="2.jpg" alt="Групові курси" loading="lazy">
+          <div class="srv-tag-wrap"><span data-t="s2t">До 6 осіб</span></div>
+        </div>
+        <div class="srv-body">
+          <div class="srv-h" data-t="s2h">Групові курси</div>
+          <div class="srv-p" data-t="s2p">Жива розмовна практика в малій групі. Нові знайомства і мотивація йти далі разом.</div>
+          <div class="srv-foot">
+            <div class="srv-price" data-t="s2pr">від 60 zł/заняття</div>
+            <button class="srv-btn" onclick="openCalc()" data-t="s_btn">Записатись</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="srv-card rv rv-3">
+        <div class="srv-img">
+          <img src="3.jpg" alt="Підготовка до іспитів" loading="lazy">
+          <div class="srv-tag-wrap"><span data-t="s3t">Сертифікат</span></div>
+        </div>
+        <div class="srv-body">
+          <div class="srv-h" data-t="s3h">Підготовка до іспитів</div>
+          <div class="srv-p" data-t="s3p">Certyfikat biegłości, карта побиту, вступ до університету. 94% здають з першого разу.</div>
+          <div class="srv-foot">
+            <div class="srv-price" data-t="s3pr">від 140 zł/год</div>
+            <button class="srv-btn" onclick="openCalc()" data-t="s_btn">Записатись</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="srv-card rv rv-4">
+        <div class="srv-img">
+          <img src="4.jpg" alt="Корпоративне навчання" loading="lazy">
+          <div class="srv-tag-wrap"><span data-t="s4t">Для бізнесу</span></div>
+        </div>
+        <div class="srv-body">
+          <div class="srv-h" data-t="s4h">Корпоративне навчання</div>
+          <div class="srv-p" data-t="s4p">Польська для вашої команди. Виїзд в офіс або онлайн. Офіційний рахунок, VAT.</div>
+          <div class="srv-foot">
+            <div class="srv-price" data-t="s4pr">від 200 zł/год</div>
+            <button class="srv-btn" onclick="openCalc()" data-t="s_btn">Записатись</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="srv-card rv rv-5">
+        <div class="srv-img">
+          <img src="5.jpg" alt="Розмовний клуб" loading="lazy">
+          <div class="srv-tag-wrap"><span data-t="s5t">Щотижня</span></div>
+        </div>
+        <div class="srv-body">
+          <div class="srv-h" data-t="s5h">Розмовний клуб</div>
+          <div class="srv-p" data-t="s5p">Практика без формального навчання. Актуальні теми, жива атмосфера, нові знайомства.</div>
+          <div class="srv-foot">
+            <div class="srv-price" data-t="s5pr">25 zł/зустріч</div>
+            <button class="srv-btn" onclick="openCalc()" data-t="s_btn">Записатись</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="srv-card rv rv-6">
+        <div class="srv-img">
+          <img src="6.jpg" alt="Для дітей" loading="lazy">
+          <div class="srv-tag-wrap"><span data-t="s6t">Від 5 років</span></div>
+        </div>
+        <div class="srv-body">
+          <div class="srv-h" data-t="s6h">Польська для дітей</div>
+          <div class="srv-p" data-t="s6p">Через гру, пісні й малювання. Дитина відчуває себе своєю в польській школі вже за кілька місяців.</div>
+          <div class="srv-foot">
+            <div class="srv-price" data-t="s6pr">від 80 zł/год</div>
+            <button class="srv-btn" onclick="openCalc()" data-t="s_btn">Записатись</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="sep"></div>
+
+<!-- ═════════ GALLERY ═════════ -->
+<section id="gallery" class="sec">
+  <div class="wrap">
+    <div class="sec-tag rv"><span data-t="gal_tag">Про школу</span></div>
+    <h2 class="sec-h rv rv-l" style="font-size:clamp(1.9rem,3.5vw,3rem)" data-t="gal_h">
+      Місце, де народжується<br><em class="f-italic">впевненість у мові</em>
+    </h2>
+    <p class="sec-sub rv rv-2" data-t="gal_sub">Затишна атмосфера Гданська, де кожен урок — це маленька перемога.</p>
+
+    <div class="gal-grid">
+      <div class="gal-item rv rv-l" onclick="openModal('1.jpg')">
+        <img src="1.jpg" alt="" loading="lazy">
+        <div class="gal-ov"><div class="gal-ov-icon">⊕</div></div>
+      </div>
+      <div class="gal-item rv rv-2" onclick="openModal('3.jpg')">
+        <img src="3.jpg" alt="" loading="lazy">
+        <div class="gal-ov"><div class="gal-ov-icon">⊕</div></div>
+      </div>
+      <div class="gal-item rv rv-3" onclick="openModal('4.jpg')">
+        <img src="4.jpg" alt="" loading="lazy">
+        <div class="gal-ov"><div class="gal-ov-icon">⊕</div></div>
+      </div>
+      <div class="gal-item rv rv-4" onclick="openModal('5.jpg')">
+        <img src="5.jpg" alt="" loading="lazy">
+        <div class="gal-ov"><div class="gal-ov-icon">⊕</div></div>
+      </div>
+      <div class="gal-item rv rv-5" onclick="openModal('6.jpg')">
+        <img src="6.jpg" alt="" loading="lazy">
+        <div class="gal-ov"><div class="gal-ov-icon">⊕</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Modal -->
+<div class="modal-bg" id="modal" onclick="if(event.target===this)closeModal()">
+  <div class="modal-inner">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <img id="modal-img" src="" alt="">
+  </div>
+</div>
+
+<div class="sep"></div>
+
+<!-- ═════════ PROCESS ═════════ -->
+<section id="process" class="sec">
+  <div class="wrap">
+    <div class="sec-tag rv"><span data-t="prc_tag">Як ми працюємо</span></div>
+    <h2 class="sec-h rv rv-l" style="font-size:clamp(1.9rem,3.5vw,3rem)" data-t="prc_h">
+      Від першого «Dzień dobry»<br>до <em class="f-italic">вільної розмови</em>
+    </h2>
+
+    <div class="proc-grid">
+      <div class="proc-steps">
+        <div class="proc-step rv rv-l">
+          <div class="ps-n">01</div>
+          <div><div class="ps-h" data-t="p1h">Безкоштовна діагностика</div><div class="ps-p" data-t="p1p">15-хвилинна розмова з викладачем. Ніяких тестів, ніякого стресу. Просто говоримо і розбираємось, з чого краще стартувати саме вам.</div></div>
+        </div>
+        <div class="proc-step rv rv-2">
+          <div class="ps-n">02</div>
+          <div><div class="ps-h" data-t="p2h">Індивідуальна програма</div><div class="ps-p" data-t="p2p">Виходячи з вашої мети — карта побиту, робота, університет або просто комфортне життя — будуємо програму під вас.</div></div>
+        </div>
+        <div class="proc-step rv rv-3">
+          <div class="ps-n">03</div>
+          <div><div class="ps-h" data-t="p3h">Заняття і практика</div><div class="ps-p" data-t="p3p">Говоримо польською з першого уроку. Домашніх завдань — мінімум і тільки те, що реально допомагає. Прогрес видно з тижня в тиждень.</div></div>
+        </div>
+        <div class="proc-step rv rv-4">
+          <div class="ps-n">04</div>
+          <div><div class="ps-h" data-t="p4h">Результат і подальший ріст</div><div class="ps-p" data-t="p4p">Ви виходите з іспиту з документом або просто починаєте вільно жити по-польськи. Ми на зв'язку і після курсу.</div></div>
+        </div>
+      </div>
+
+      <div class="proc-right rv rv-3">
+        <div class="proc-img">
+          <img src="2.jpg" alt="Навчальний процес" loading="lazy">
+        </div>
+        <div class="proc-note">
+          <div class="pn-ico">🎁</div>
+          <div>
+            <div class="pn-h" data-t="pn_h">Перший урок — безкоштовно</div>
+            <div class="pn-p" data-t="pn_p">Запишіться на пробне заняття і переконайтесь самі</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="sep"></div>
+
+<!-- ═════════ REVIEWS ═════════ -->
+<section id="reviews" class="sec">
+  <div class="rev-head">
+    <div class="sec-tag rv"><span data-t="rev_tag">Відгуки</span></div>
+    <h2 class="sec-h rv rv-l" style="font-size:clamp(1.9rem,3.5vw,3rem)" data-t="rev_h">Їхні слова — краща реклама</h2>
+  </div>
+  <div class="rev-mask">
+    <div class="rev-track" id="revTrack"></div>
+  </div>
+</section>
+
+<div class="sep"></div>
+
+<!-- ═════════ CONTACT ═════════ -->
+<section id="contact" class="sec">
+  <div class="contact-deco"></div>
+  <div class="wrap">
+    <div class="contact-inner">
+      <div class="rv">
+        <div class="sec-tag"><span data-t="ct_tag">Записатись</span></div>
+        <h2 class="cl-h f-title" data-t="ct_h">
+          Почніть говорити<br>польською вже<br><em class="f-italic">цього місяця</em>
+        </h2>
+        <p class="cl-p" data-t="ct_p">Залишіть заявку — ми зв'яжемося протягом 2 годин, підберемо зручний час і проведемо безкоштовне пробне заняття. Без тиску і зобов'язань.</p>
+        <div class="cl-badges">
+          <div class="cl-badge"><div class="cl-badge-ico">✓</div><span data-t="b1">Безкоштовна діагностика рівня</span></div>
+          <div class="cl-badge"><div class="cl-badge-ico">✓</div><span data-t="b2">Перше заняття пробне — без оплати</span></div>
+          <div class="cl-badge"><div class="cl-badge-ico">✓</div><span data-t="b3">Відповімо протягом 2 годин</span></div>
+        </div>
+      </div>
+
+      <div class="rv rv-2">
+        <div class="form-box">
+          <div id="fWrap">
+            <div class="fb-h" data-t="fm_h">Записатись</div>
+            <div class="fb-sub" data-t="fm_s">Перший крок — безкоштовний</div>
+            <form id="mainForm" onsubmit="handleForm(event,'mainForm','fWrap','fTy')">
+              <div class="fg"><label data-t="l_name">Ім'я</label><input type="text" name="name" placeholder="Ваше ім'я" required></div>
+              <div class="fg"><label data-t="l_cont">Telegram або телефон</label><input type="text" name="contact" placeholder="+48 або @username" required></div>
+              <div class="fg">
+                <label data-t="l_srv">Що цікавить?</label>
+                <select name="service">
+                  <option data-t="s1h">Індивідуальні заняття</option>
+                  <option data-t="s2h">Групові курси</option>
+                  <option data-t="s3h">Підготовка до іспитів</option>
+                  <option data-t="s6h">Польська для дітей</option>
+                  <option data-t="s5h">Розмовний клуб</option>
+                  <option data-t="s4h">Корпоративне навчання</option>
+                </select>
+              </div>
+              <button type="submit" class="btn btn-solid btn-form" data-t="fm_btn">Записатись безкоштовно →</button>
+            </form>
+          </div>
+          <div class="f-ty" id="fTy">
+            <div class="ty-ico">🎉</div>
+            <div class="ty-h" data-t="ty_h">Дякуємо!</div>
+            <div class="ty-p" data-t="ty_p">Ми напишемо вам протягом 2 годин. Перевірте Telegram або телефон.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═════════ FOOTER ═════════ -->
+<footer>
+  <a href="#" class="f-logo">Мовна школа <em>· Gdańsk</em></a>
+  <span class="f-copy" data-t="ft">© 2025 Мовна школа · Всі права захищені</span>
+</footer>
+
+
+<!-- ═════════ CALC POPUP ═════════ -->
+<div class="pop-bg" id="calcPop">
+  <div class="pop-box">
+    <button class="pop-x" onclick="closeCalc()">✕</button>
+    <div class="pop-h" data-t="c_h">Вартість навчання</div>
+    <div class="pop-sub" data-t="c_s">Оберіть параметри — порахуємо ціну</div>
+    <div class="fg">
+      <label data-t="c_fmt">Формат</label>
+      <select id="cFmt" onchange="calcPrice()">
+        <option value="0" data-t="cf0">Оберіть формат</option>
+        <option value="120" data-t="cf1">Індивідуально (1:1)</option>
+        <option value="60"  data-t="cf2">Мала група (до 6 осіб)</option>
+        <option value="140" data-t="cf3">Підготовка до іспиту</option>
+        <option value="200" data-t="cf4">Корпоративне</option>
+        <option value="25"  data-t="cf5">Розмовний клуб</option>
+        <option value="80"  data-t="cf6">Для дітей</option>
+      </select>
+    </div>
+    <div class="fg">
+      <label data-t="c_freq">Занять на тиждень</label>
+      <select id="cFreq" onchange="calcPrice()">
+        <option value="1">1 заняття</option>
+        <option value="2">2 заняття</option>
+        <option value="3">3 заняття</option>
+        <option value="4">4 заняття</option>
+      </select>
+    </div>
+    <div class="fg">
+      <label data-t="c_dur">Тривалість заняття</label>
+      <select id="cDur" onchange="calcPrice()">
+        <option value="1">60 хвилин</option>
+        <option value="1.5">90 хвилин</option>
+        <option value="2">120 хвилин</option>
+      </select>
+    </div>
+    <div class="calc-r" id="calcRes">
+      <div class="calc-num" id="calcNum">—</div>
+      <div class="calc-lbl" data-t="c_mo">zł / місяць</div>
+    </div>
+    <button class="btn btn-solid btn-form" onclick="closeCalc();document.getElementById('contact').scrollIntoView({behavior:'smooth'})" data-t="c_cta">Записатись за цією ціною →</button>
+  </div>
+</div>
+
+
+<!-- ═════════ LEAD POPUP ═════════ -->
+<div class="pop-bg" id="leadPop">
+  <div class="pop-box">
+    <button class="pop-x" onclick="closeLead()">✕</button>
+    <div class="pop-badge" data-t="ld_badge">Безкоштовно</div>
+    <div class="pop-h" data-t="ld_h">Пробний урок у подарунок</div>
+    <div class="pop-sub" data-t="ld_s">Залишіть контакт — ми самі зв'яжемось і підберемо зручний час</div>
+    <div id="lfWrap">
+      <form id="leadForm" onsubmit="handleForm(event,'leadForm','lfWrap','lfTy')">
+        <div class="fg"><label data-t="l_name">Ім'я</label><input type="text" name="name" placeholder="Ваше ім'я" required></div>
+        <div class="fg"><label data-t="l_cont">Telegram або телефон</label><input type="text" name="contact" placeholder="+48 або @username" required></div>
+        <button type="submit" class="btn btn-solid btn-form" data-t="ld_btn">Отримати безкоштовний урок →</button>
+      </form>
+    </div>
+    <div class="f-ty" id="lfTy">
+      <div class="ty-ico">✨</div>
+      <div class="ty-h" data-t="ty_h">Дякуємо!</div>
+      <div class="ty-p" data-t="ty_p">Ми напишемо вам протягом 2 годин.</div>
+    </div>
+  </div>
+</div>
+
+
+<script>
+/* ───── TRANSLATIONS ───── */
+const TR = {
+uk:{
+  n_why:'Чому ми',n_srv:'Послуги',n_gal:'Про школу',n_prc:'Як це працює',n_rev:'Відгуки',n_con:'Контакт',n_cta:'Записатись',
+  h_tag:'Мовна школа · Gdańsk',h_t1:'Польська,',h_t2:'яка змінює',h_t3:'ваше життя',
+  h_sub:'Ви вже тут — в Гданську. Залишилось заговорити. Наші викладачі пройшли той самий шлях і знають, як довести вас до результату за 3 місяці.',
+  h_c1:'Розмовна польська з першого уроку',h_c2:'Підготовка до іспитів і карти побиту',h_c3:'Онлайн і офлайн у зручний час',
+  h_cta1:'Розрахувати вартість →',h_cta2:'Дізнатись більше',h_scroll:'Гортайте',h_pill:'· 280+ учнів у Gdańsk',
+  st1:'Учнів',st2:'Здають іспит з 1 разу',st3:'До вільного мовлення',st4:'Google Reviews',
+  why_tag:'Чому ми',why_h:'Ми не вчимо мову.\nМи змінюємо ваш досвід у Польщі.',
+  w1h:'Мова для вашого реального життя',w1p:'Ніяких абстрактних підручників. Ви вчите слова, які потрібні вам сьогодні: в лікарні, на роботі, в держустановах.',
+  w2h:'Викладачі, які теж емігрували',w2p:'Вони знають страх помилитись. Тому у нас безпечне середовище, де помилка — це просто крок вперед.',
+  w3h:'Ціль — ваша, програма — ваша',w3p:'Карта побиту, нова робота, університет — план навчання будується під вас.',
+  w4h:'Видимий результат за 30 днів',w4p:'Після місяця ви вже можете зробити покупки, розмовляти з лікарем і читати польські повідомлення.',
+  srv_tag:'Послуги',srv_h:'Оберіть свій формат',srv_calc:'Розрахувати вартість',
+  s1t:'Найпопулярніше',s1h:'Індивідуальні заняття',s1p:'Повна увага викладача. Ваш темп, ваші цілі.',s1pr:'від 120 zł/год',
+  s2t:'До 6 осіб',s2h:'Групові курси',s2p:'Жива розмовна практика в малій групі. Нові знайомства і мотивація.',s2pr:'від 60 zł/заняття',
+  s3t:'Сертифікат',s3h:'Підготовка до іспитів',s3p:'94% здають з першого разу. Certyfikat biegłości, карта побиту.',s3pr:'від 140 zł/год',
+  s4t:'Для бізнесу',s4h:'Корпоративне навчання',s4p:'Польська для команди. Офіційний рахунок, VAT.',s4pr:'від 200 zł/год',
+  s5t:'Щотижня',s5h:'Розмовний клуб',s5p:'Практика без формального навчання. Актуальні теми, жива атмосфера.',s5pr:'25 zł/зустріч',
+  s6t:'Від 5 років',s6h:'Польська для дітей',s6p:'Через гру, пісні й малювання. Дитина відчуває себе своєю в польській школі.',s6pr:'від 80 zł/год',
+  s_btn:'Записатись',
+  gal_tag:'Про школу',gal_h:'Місце, де народжується впевненість у мові',gal_sub:'Затишна атмосфера Гданська, де кожен урок — маленька перемога.',
+  prc_tag:'Як ми працюємо',prc_h:'Від першого «Dzień dobry» до вільної розмови',
+  p1h:'Безкоштовна діагностика',p1p:'15-хвилинна розмова з викладачем. Ніяких тестів, ніякого стресу.',
+  p2h:'Індивідуальна програма',p2p:'Виходячи з вашої мети будуємо програму під вас.',
+  p3h:'Заняття і практика',p3p:'Говоримо польською з першого уроку. Прогрес видно щотижня.',
+  p4h:'Результат і подальший ріст',p4p:'Ви виходите з іспиту з документом або вільно живете по-польськи.',
+  pn_h:'Перший урок — безкоштовно',pn_p:'Запишіться на пробне заняття і переконайтесь самі',
+  rev_tag:'Відгуки',rev_h:'Їхні слова — краща реклама',
+  ct_tag:'Записатись',ct_h:'Почніть говорити польською вже цього місяця',
+  ct_p:'Залишіть заявку — ми зв\'яжемося протягом 2 годин і проведемо безкоштовне пробне заняття.',
+  b1:'Безкоштовна діагностика рівня',b2:'Перше заняття пробне — без оплати',b3:'Відповімо протягом 2 годин',
+  fm_h:'Записатись',fm_s:'Перший крок — безкоштовний',fm_btn:'Записатись безкоштовно →',
+  l_name:'Ім\'я',l_cont:'Telegram або телефон',l_srv:'Що цікавить?',
+  ty_h:'Дякуємо!',ty_p:'Ми напишемо вам протягом 2 годин. Перевірте Telegram або телефон.',
+  ft:'© 2025 Мовна школа · Всі права захищені',
+  c_h:'Вартість навчання',c_s:'Оберіть параметри — порахуємо ціну',
+  c_fmt:'Формат',c_freq:'Занять на тиждень',c_dur:'Тривалість заняття',
+  cf0:'Оберіть формат',cf1:'Індивідуально (1:1)',cf2:'Мала група (до 6 осіб)',
+  cf3:'Підготовка до іспиту',cf4:'Корпоративне',cf5:'Розмовний клуб',cf6:'Для дітей',
+  c_mo:'zł / місяць',c_cta:'Записатись за цією ціною →',
+  ld_badge:'Безкоштовно',ld_h:'Пробний урок у подарунок',ld_s:'Залишіть контакт — ми самі зв\'яжемось і підберемо зручний час',ld_btn:'Отримати безкоштовний урок →',
+},
+pl:{
+  n_why:'Dlaczego my',n_srv:'Usługi',n_gal:'O szkole',n_prc:'Jak pracujemy',n_rev:'Opinie',n_con:'Kontakt',n_cta:'Zapisz się',
+  h_tag:'Szkoła językowa · Gdańsk',h_t1:'Polski,',h_t2:'który zmienia',h_t3:'Twoje życie',
+  h_sub:'Już tu jesteś — w Gdańsku. Zostało tylko zacząć mówić. Nasi nauczyciele przeszli tę samą drogę i wiedzą, jak doprowadzić Cię do celu w 3 miesiące.',
+  h_c1:'Konwersacje od pierwszej lekcji',h_c2:'Przygotowanie do egzaminów i karty pobytu',h_c3:'Online i offline w wygodnym terminie',
+  h_cta1:'Oblicz koszt →',h_cta2:'Dowiedz się więcej',h_scroll:'Przewijaj',h_pill:'· 280+ uczniów w Gdańsku',
+  st1:'Uczniów',st2:'Zdaje za 1 razem',st3:'Do swobodnej mowy',st4:'Google Reviews',
+  why_tag:'Dlaczego my',why_h:'Nie uczymy języka.\nZmieniamy Twoje doświadczenie w Polsce.',
+  w1h:'Język dla Twojego codziennego życia',w1p:'Żadnych abstrakcyjnych podręczników. Uczysz się słów potrzebnych dziś: w lekarzu, w pracy, w urzędzie.',
+  w2h:'Nauczyciele też emigrowali',w2p:'Wiedzą, czym jest strach przed błędem. Dlatego mamy bezpieczne środowisko, gdzie błąd to krok naprzód.',
+  w3h:'Cel Twój, program Twój',w3p:'Karta pobytu, praca, uczelnia — program układany specjalnie dla Ciebie.',
+  w4h:'Widoczny wynik w 30 dni',w4p:'Po miesiącu możesz zrobić zakupy, porozmawiać z lekarzem i czytać polskie wiadomości.',
+  srv_tag:'Usługi',srv_h:'Wybierz swój format',srv_calc:'Oblicz koszt',
+  s1t:'Najpopularniejsze',s1h:'Zajęcia indywidualne',s1p:'Pełna uwaga nauczyciela. Twoje tempo, Twoje cele.',s1pr:'od 120 zł/godz.',
+  s2t:'Do 6 osób',s2h:'Kursy grupowe',s2p:'Żywa praktyka konwersacyjna w małej grupie.',s2pr:'od 60 zł/zajęcia',
+  s3t:'Certyfikat',s3h:'Przygotowanie do egzaminów',s3p:'94% zdaje za pierwszym razem. Certyfikat biegłości, karta pobytu.',s3pr:'od 140 zł/godz.',
+  s4t:'Dla biznesu',s4h:'Szkolenia korporacyjne',s4p:'Polski dla zespołu. Oficjalna faktura, VAT.',s4pr:'od 200 zł/godz.',
+  s5t:'Co tydzień',s5h:'Klub konwersacyjny',s5p:'Praktyka bez formalnej nauki. Aktualne tematy, żywa atmosfera.',s5pr:'25 zł/spotkanie',
+  s6t:'Od 5 lat',s6h:'Polski dla dzieci',s6p:'Przez zabawę, piosenki i rysowanie. Dziecko czuje się swoje w polskiej szkole.',s6pr:'od 80 zł/godz.',
+  s_btn:'Zapisz się',
+  gal_tag:'O szkole',gal_h:'Miejsce, gdzie rodzi się pewność siebie w języku',gal_sub:'Przytulna atmosfera Gdańska, gdzie każda lekcja to mały sukces.',
+  prc_tag:'Jak pracujemy',prc_h:'Od pierwszego „Dzień dobry" do swobodnej rozmowy',
+  p1h:'Bezpłatna diagnoza',p1p:'15-minutowa rozmowa z nauczycielem. Zero testów, zero stresu.',
+  p2h:'Indywidualny program',p2p:'Na podstawie Twojego celu układamy program specjalnie dla Ciebie.',
+  p3h:'Zajęcia i praktyka',p3p:'Mówimy po polsku od pierwszej lekcji. Postęp widoczny co tydzień.',
+  p4h:'Wynik i dalszy rozwój',p4p:'Wychodzisz z egzaminu z dokumentem lub po prostu swobodnie żyjesz po polsku.',
+  pn_h:'Pierwsza lekcja — bezpłatna',pn_p:'Zapisz się na lekcję próbną i przekonaj się sam',
+  rev_tag:'Opinie',rev_h:'Ich słowa — najlepsza reklama',
+  ct_tag:'Zapisz się',ct_h:'Zacznij mówić po polsku już w tym miesiącu',
+  ct_p:'Zostaw zgłoszenie — skontaktujemy się w ciągu 2 godzin i przeprowadzimy bezpłatną lekcję próbną.',
+  b1:'Bezpłatna diagnoza poziomu',b2:'Pierwsza lekcja próbna — bez opłat',b3:'Odpiszemy w ciągu 2 godzin',
+  fm_h:'Zapisz się',fm_s:'Pierwszy krok — bezpłatny',fm_btn:'Zapisz się bezpłatnie →',
+  l_name:'Imię',l_cont:'Telegram lub telefon',l_srv:'Co Cię interesuje?',
+  ty_h:'Dziękujemy!',ty_p:'Napiszemy do Ciebie w ciągu 2 godzin.',
+  ft:'© 2025 Szkoła językowa · Wszelkie prawa zastrzeżone',
+  c_h:'Koszt nauki',c_s:'Wybierz parametry — obliczymy cenę',
+  c_fmt:'Format',c_freq:'Zajęć w tygodniu',c_dur:'Czas trwania',
+  cf0:'Wybierz format',cf1:'Indywidualnie (1:1)',cf2:'Mała grupa (do 6 osób)',
+  cf3:'Przygotowanie do egzaminu',cf4:'Korporacyjne',cf5:'Klub konwersacyjny',cf6:'Dla dzieci',
+  c_mo:'zł / miesiąc',c_cta:'Zapisz się w tej cenie →',
+  ld_badge:'Bezpłatnie',ld_h:'Próbna lekcja w prezencie',ld_s:'Zostaw kontakt — sami się odezwiemy i dobierzemy wygodny termin',ld_btn:'Otrzymaj bezpłatną lekcję →',
+}};
+
+let lang='uk';
+function setLang(l){
+  lang=l;
+  const t=TR[l];
+  document.querySelectorAll('[data-t]').forEach(el=>{
+    const k=el.dataset.t;
+    if(t[k]!==undefined) el.textContent=t[k];
+  });
+  document.querySelectorAll('.lang button').forEach(b=>{
+    b.classList.toggle('a',(b.textContent==='UA'&&l==='uk')||(b.textContent==='PL'&&l==='pl'));
+  });
+  document.documentElement.lang=l;
+}
+
+/* ── REVIEWS ── */
+const REV=[
+  {n:'Оксана К.',c:'Gdańsk',q:'Після 3 місяців вже спілкуюсь з колегами без перекладача. Не вірила, що так швидко вийде!',i:'О'},
+  {n:'Михайло Д.',c:'Gdańsk',q:'Здав іспит для карти побиту з першого разу. Викладач знала точно, де я плаваю.',i:'М'},
+  {n:'Катерина В.',c:'Sopot',q:'Дочка почала ходити в польський садочок і вже через місяць співала пісеньки польською.',i:'К'},
+  {n:'Андрій Р.',c:'Gdynia',q:'Корпоративний курс для команди — всі дуже задоволені. Гнучкий підхід і реальні результати.',i:'А'},
+  {n:'Лариса П.',c:'Gdańsk',q:'Розмовний клуб — найкраще, що я знайшла тут. Практика, нові друзі і завжди весело.',i:'Л'},
+  {n:'Ігор С.',c:'Gdańsk',q:'Два місяці — і вже читаю польські контракти без словника. Неймовірно ефективно.',i:'І'},
+  {n:'Марія Т.',c:'Gdańsk',q:'Знайшла роботу в польській компанії завдяки мові. Інвестиція, що окупилась за місяць.',i:'М'},
+];
+function buildRevs(){
+  const tr=document.getElementById('revTrack');
+  const all=[...REV,...REV];
+  tr.innerHTML=all.map(r=>`
+    <div class="rev-card">
+      <div class="rev-stars">★★★★★</div>
+      <div class="rev-q">"${r.q}"</div>
+      <div class="rev-auth">
+        <div class="rev-av">${r.i}</div>
+        <div><div class="rev-name">${r.n}</div><div class="rev-city">${r.c}</div></div>
+      </div>
+    </div>`).join('');
+}
+
+/* ── NAV SCROLL ── */
+window.addEventListener('scroll',()=>{
+  document.getElementById('nav').classList.toggle('s',scrollY>50);
+},{passive:true});
+
+/* ── MOBILE MENU ── */
+const burger=document.getElementById('burger');
+const mob=document.getElementById('mob');
+document.getElementById('mobX').addEventListener('click',closeMob);
+burger.addEventListener('click',()=>{
+  burger.classList.toggle('o');
+  mob.classList.toggle('o');
+  document.body.style.overflow=mob.classList.contains('o')?'hidden':'';
+});
+function closeMob(){
+  burger.classList.remove('o');
+  mob.classList.remove('o');
+  document.body.style.overflow='';
+}
+
+/* ── REVEAL ── */
+const rvObs=new IntersectionObserver(es=>{
+  es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')});
+},{threshold:.1});
+document.querySelectorAll('.rv').forEach(el=>rvObs.observe(el));
+
+/* ── MODAL ── */
+function openModal(src){
+  document.getElementById('modal-img').src=src;
+  document.getElementById('modal').classList.add('o');
+  document.body.style.overflow='hidden';
+}
+function closeModal(){
+  document.getElementById('modal').classList.remove('o');
+  document.body.style.overflow='';
+}
+
+/* ── CALC ── */
+function openCalc(){
+  document.getElementById('calcPop').classList.add('o');
+  document.body.style.overflow='hidden';
+}
+function closeCalc(){
+  document.getElementById('calcPop').classList.remove('o');
+  document.body.style.overflow='';
+}
+document.getElementById('calcPop').addEventListener('click',e=>{
+  if(e.target===document.getElementById('calcPop'))closeCalc();
+});
+function calcPrice(){
+  const base=parseFloat(document.getElementById('cFmt').value)||0;
+  if(!base){document.getElementById('calcRes').classList.remove('s');return}
+  const freq=parseFloat(document.getElementById('cFreq').value);
+  const dur=parseFloat(document.getElementById('cDur').value);
+  document.getElementById('calcNum').textContent=Math.round(base*freq*dur*4)+' zł';
+  document.getElementById('calcRes').classList.add('s');
+}
+
+/* ── LEAD POPUP ── */
+let leadDone=false;
+function showLead(){if(leadDone)return;leadDone=true;document.getElementById('leadPop').classList.add('o')}
+function closeLead(){document.getElementById('leadPop').classList.remove('o')}
+document.getElementById('leadPop').addEventListener('click',e=>{if(e.target===document.getElementById('leadPop'))closeLead()});
+setTimeout(showLead,25000);
+window.addEventListener('scroll',()=>{if(scrollY/(document.body.scrollHeight-innerHeight)>.6)showLead()},{passive:true});
+
+/* ── TELEGRAM ── */
+const TG_T='8090010233:AAGucMxosOir1f7ttPIUODULMbO2DYoqTHU';
+const TG_C='-4934715371';
+async function sendTG(data,src){
+  const now=new Date().toLocaleString('uk-UA',{timeZone:'Europe/Warsaw'});
+  const txt=`🎓 *Нова заявка — Мовна школа Gdańsk*\n━━━━━━━━━━━━━━━\n👤 *Ім'я:* ${data.name||'—'}\n📱 *Контакт:* ${data.contact||'—'}\n📚 *Послуга:* ${data.service||'—'}\n📌 *Форма:* ${src}\n🌐 *Мова сайту:* ${lang==='uk'?'UA':'PL'}\n⏰ ${now}`;
+  try{await fetch(`https://api.telegram.org/bot${TG_T}/sendMessage`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({chat_id:TG_C,text:txt,parse_mode:'Markdown'})})}catch(e){console.warn(e)}
+}
+async function handleForm(e,fId,wId,tId){
+  e.preventDefault();
+  const form=document.getElementById(fId);
+  const data=Object.fromEntries(new FormData(form).entries());
+  const btn=form.querySelector('[type=submit]');
+  btn.textContent='…';btn.disabled=true;
+  await sendTG(data,fId==='mainForm'?'Головна форма':'Lead popup');
+  document.getElementById(wId).style.display='none';
+  document.getElementById(tId).classList.add('s');
+  if(fId==='leadForm')setTimeout(closeLead,3000);
+}
+
+/* ── INIT ── */
+buildRevs();
+</script>
+</body>
+</html>
