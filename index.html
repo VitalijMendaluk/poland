@@ -789,7 +789,12 @@ footer{
 ═══════════════════════════════ */
 @media(max-width:900px){
   #hero{grid-template-columns:1fr;min-height:100svh}
-  .hero-left{padding-right:clamp(20px,5vw,60px);padding-top:calc(var(--nav-h)+48px);padding-bottom:120px}
+  .hero-left{
+    padding-right:clamp(20px,5vw,60px);
+    padding-top:calc(var(--nav-h) + 24px);
+    padding-bottom:72px;
+    justify-content:flex-end;
+  }
   .hero-right{position:absolute;inset:0;z-index:0;opacity:.35}
   .hero-right .hero-img::after{background:linear-gradient(to top,var(--ink) 30%,rgba(14,12,10,.5) 100%)}
 
@@ -867,8 +872,13 @@ footer{
   footer{flex-direction:column;text-align:center}
   .mob-nav a{font-size:clamp(1.9rem,9vw,3rem)}
 
-  /* Why wide card — картинка після тексту */
-  .why-card.wide .wc-wide-img{aspect-ratio:16/9}
+  /* Why wide card — картинка як у першій картці (з відступом і rounded corners) */
+  .why-card.wide .wc-wide-img{
+    aspect-ratio:4/3;
+    border-radius:var(--r);
+    overflow:hidden;
+    margin:0 clamp(20px,5vw,44px) clamp(20px,5vw,44px);
+  }
 }
 </style>
 </head>
@@ -900,7 +910,6 @@ footer{
 
 <!-- ═════════ MOB MENU ═════════ -->
 <div id="mob">
-  <button class="mob-x" id="mobX">✕</button>
   <nav>
     <ul class="mob-nav">
       <li><a href="#why"      onclick="closeMob()" data-t="n_why">Чому ми</a></li>
@@ -1532,7 +1541,7 @@ window.addEventListener('scroll',()=>{
 /* ── MOBILE MENU ── */
 const burger=document.getElementById('burger');
 const mob=document.getElementById('mob');
-document.getElementById('mobX').addEventListener('click',closeMob);
+/* mob-x removed */
 burger.addEventListener('click',()=>{
   burger.classList.toggle('o');
   mob.classList.toggle('o');
