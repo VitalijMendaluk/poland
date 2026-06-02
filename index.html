@@ -792,7 +792,9 @@ footer{
   .hero-left{padding-right:clamp(20px,5vw,60px);padding-top:calc(var(--nav-h)+48px);padding-bottom:120px}
   .hero-right{position:absolute;inset:0;z-index:0;opacity:.35}
   .hero-right .hero-img::after{background:linear-gradient(to top,var(--ink) 30%,rgba(14,12,10,.5) 100%)}
-  .hero-pill{bottom:36px}
+
+  /* Приховати рейтинг-pill на мобільному */
+  .hero-pill{display:none}
 
   .stats-inner{grid-template-columns:repeat(2,1fr)}
   .stat{border-right:1px solid var(--border);border-bottom:1px solid var(--border)}
@@ -800,10 +802,19 @@ footer{
   .stat:nth-child(3){border-bottom:none}
   .stat:nth-child(4){border-right:none;border-bottom:none}
 
+  /* Why — однаковий вигляд для всіх карток */
   .why-grid{grid-template-columns:1fr}
   .why-card.big{grid-row:auto}
-  .why-card.wide{grid-template-columns:1fr;grid-column:span 1}
-  .why-card.wide .wc-wide-img{min-height:220px}
+  .why-card.wide{
+    grid-template-columns:1fr;
+    grid-column:span 1;
+    display:flex;flex-direction:column;
+  }
+  .why-card.wide .wc-text{padding:clamp(28px,5vw,44px)}
+  .why-card.wide .wc-wide-img{
+    width:100%;aspect-ratio:4/3;min-height:unset;
+    flex-shrink:0;
+  }
 
   .proc-grid{grid-template-columns:1fr;gap:48px}
   .proc-right{position:relative;top:auto}
@@ -811,8 +822,22 @@ footer{
   .contact-inner{grid-template-columns:1fr;gap:48px}
 
   .nav-links{display:none}
-  .nav-r .btn{display:none}
+  /* Приховати текстову кнопку "Записатись" — лишаємо тільки burger */
+  .nav-r > .btn-solid{display:none}
   .burger{display:flex}
+
+  /* Перемикач мов — чіткий на мобільному */
+  .lang{
+    background:rgba(237,232,225,.15);
+    border-color:rgba(237,232,225,.4);
+  }
+  .lang button{color:rgba(237,232,225,.8)}
+  .lang button.a{background:var(--gold);color:var(--ink)}
+
+  /* About section — стек на мобільному */
+  .about-wrap{grid-template-columns:1fr;gap:36px}
+  .about-img{aspect-ratio:4/3;align-self:auto}
+  .about-img img{min-height:unset}
 }
 
 /* ═══════════════════════════════
@@ -820,22 +845,30 @@ footer{
 ═══════════════════════════════ */
 @media(max-width:600px){
   :root{--nav-h:60px}
-  .hero-h1{font-size:clamp(2.4rem,10vw,3.4rem)}
+
+  /* Nav — компактніший, burger і lang поруч */
+  #nav{padding:0 16px;gap:12px}
+  .nav-logo{font-size:1.1rem}
+  .nav-r{gap:8px}
+  .lang button{padding:4px 8px;font-size:.68rem}
+
+  .hero-h1{font-size:clamp(2.2rem,9vw,3.2rem)}
   .hero-btns{flex-direction:column}
   .hero-btns .btn{width:100%;justify-content:center}
 
   .stats-inner{grid-template-columns:1fr 1fr}
-  .stat{padding:24px 20px}
+  .stat{padding:20px 16px}
+  .stat-n{font-size:clamp(1.8rem,7vw,2.4rem)}
 
   .srv-grid{grid-template-columns:1fr}
   .srv-header{flex-direction:column;align-items:flex-start}
 
-  .gal-grid{grid-template-columns:1fr 1fr}
-  .gal-item:first-child{grid-column:span 2}
-
-  .pop-box{padding:28px 22px}
+  .pop-box{padding:24px 18px}
   footer{flex-direction:column;text-align:center}
   .mob-nav a{font-size:clamp(1.9rem,9vw,3rem)}
+
+  /* Why wide card — картинка після тексту */
+  .why-card.wide .wc-wide-img{aspect-ratio:16/9}
 }
 </style>
 </head>
